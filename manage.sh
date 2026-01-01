@@ -13,4 +13,6 @@ python manage.py migrate
 python manage.py sqlmigrate training 0001
 python manage.py check
 
+python manage.py shell
+
 python manage.py createsuperuser
