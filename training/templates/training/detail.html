@@ -1,0 +1,6 @@
+<h1>{{ training.training_title }}</h1>
+<ul>
+{% for performance in training.performance_set.all %}
+    <li>{{ performance.performance_text }}</li>
+{% endfor %}
+</ul>

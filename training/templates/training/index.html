@@ -1,0 +1,9 @@
+{% if latest_training_list %}
+    <ul>
+    {% for training in latest_training_list %}
+        <li><a href="{% url 'training:detail' training.id %}">{{ training.training_title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No training is available.</p>
+{% endif %}
