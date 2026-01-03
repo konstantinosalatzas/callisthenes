@@ -5,8 +5,8 @@ from . import views
 app_name = "training"
 
 urlpatterns = [
-    # ex: /training/
-    path("", views.index, name="index"),
-    # ex: /training/5/
-    path("<int:training_id>/", views.detail, name="detail"),
+    path("", views.IndexView.as_view(), name="index"),
+    path("<int:pk>/", views.DetailView.as_view(), name="detail"),
+    path("<int:pk>/results/", views.ResultsView.as_view(), name="results"),
+    path("<int:training_id>/log/", views.log, name="log"),
 ]

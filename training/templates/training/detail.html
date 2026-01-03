@@ -1,6 +1,12 @@
-<h1>{{ training.training_title }}</h1>
-<ul>
-{% for performance in training.performance_set.all %}
-    <li>{{ performance.performance_text }}</li>
-{% endfor %}
-</ul>
+<form action="{% url 'training:log' training.id %}" method="post">
+{% csrf_token %}
+<fieldset>
+    <legend><h1>{{ training.training_title }}</h1></legend>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% for performance in training.performance_set.all %}
+        <input type="radio" name="performance" id="performance{{ forloop.counter }}" value="{{ performance.id }}">
+        <label for="performance{{ forloop.counter }}">{{ performance.performance_text }}</label><br>
+    {% endfor %}
+</fieldset>
+<input type="submit" value="Log">
+</form>
