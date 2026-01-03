@@ -2,6 +2,7 @@ import datetime
 
 from django.db import models
 from django.utils import timezone
+from django.contrib import admin
 
 class Training(models.Model):
     training_title = models.CharField(max_length=200)
@@ -10,6 +11,11 @@ class Training(models.Model):
     def __str__(self):
         return self.training_title
 
+    @admin.display(
+        boolean=True,
+        ordering="training_date",
+        description="Posted recently?",
+    )
     def was_posted_recently(self):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.training_date <= now
