@@ -17,4 +17,4 @@ python manage.py shell
 
 python manage.py createsuperuser
 
-python manage.py test polls
+python manage.py test training

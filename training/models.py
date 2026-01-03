@@ -11,7 +11,8 @@ class Training(models.Model):
         return self.training_title
 
     def was_posted_recently(self):
-        return self.training_date >= timezone.now() - datetime.timedelta(days=1)
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.training_date <= now
 
 class Performance(models.Model):
     training = models.ForeignKey(Training, on_delete=models.CASCADE)
