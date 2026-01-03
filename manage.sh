@@ -16,3 +16,5 @@ python manage.py check
 python manage.py shell
 
 python manage.py createsuperuser
+
+python manage.py test polls
