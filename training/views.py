@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.db.models import F
 from django.urls import reverse
 from django.views import generic
+from django.utils import timezone
 
 from .models import Training, Performance
 
@@ -11,12 +12,23 @@ class IndexView(generic.ListView):
     context_object_name = "latest_training_list"
 
     def get_queryset(self):
-        """Return the last five trainings."""
-        return Training.objects.order_by("-training_date")[:5]
+        """
+        Return the last five posted trainings (not including those set to be
+        posted in the future).
+        """
+        return Training.objects.filter(training_date__lte=timezone.now()).order_by("-training_date")[
+            :5
+        ]
 
 class DetailView(generic.DetailView):
     model = Training
     template_name = "training/detail.html"
+
+    def get_queryset(self):
+        """
+        Excludes any trainings that aren't posted yet.
+        """
+        return Training.objects.filter(training_date__lte=timezone.now())
 
 class ResultsView(generic.DetailView):
     model = Training
