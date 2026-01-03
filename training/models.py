@@ -10,7 +10,7 @@ class Training(models.Model):
     def __str__(self):
         return self.training_title
 
-    def was_created_recently(self):
+    def was_posted_recently(self):
         return self.training_date >= timezone.now() - datetime.timedelta(days=1)
 
 class Performance(models.Model):
