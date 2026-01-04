@@ -23,7 +23,7 @@ class Training(models.Model):
 class Performance(models.Model):
     training = models.ForeignKey(Training, on_delete=models.CASCADE)
     performance_text = models.CharField(max_length=200)
-    sets = models.IntegerField(default=1)
+    sets = models.IntegerField(default=0)
 
     def __str__(self):
         return self.performance_text
