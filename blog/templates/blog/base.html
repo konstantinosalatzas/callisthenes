@@ -14,7 +14,6 @@
                     <a href="{% url 'post_new' %}" class="top-menu">
                         {% include './icons/file-earmark-plus.svg' %}
                     </a>
-                    <a href="{% url 'post_draft_list' %}" class="top-menu">{% include './icons/pencil-square.svg'%}</a>
                     <p id="logout" class="top-menu">Hello {{ user.username }} <small><form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit">logout</button></form></small></p>
                     {% else %}
                     <a href="{% url 'login' %}" class="top-menu">{% include './icons/lock-fill.svg' %}</a>
