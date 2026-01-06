@@ -1,0 +1,13 @@
+{% extends 'tracker/base.html' %}
+
+{% block content %}
+    {% for training in trainings %}
+        <article class="post">
+            <time class="date">
+                {{ training.published_date }}
+            </time>
+            <h2><a href="{% url 'training_detail' pk=training.pk %}">{{ training.title }}</a></h2>
+            <p>{{ training.text|linebreaksbr }}</p>
+        </article>
+    {% endfor %}
+{% endblock %}

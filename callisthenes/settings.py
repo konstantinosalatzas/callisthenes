@@ -30,9 +30,9 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+#    'training.apps.TrainingConfig',
 INSTALLED_APPS = [
-    'training.apps.TrainingConfig',
-    'blog',
+    'tracker',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
