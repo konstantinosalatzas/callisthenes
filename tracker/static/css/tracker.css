@@ -27,7 +27,7 @@ h1,
 h2,
 h3,
 h4 {
-    font-family: 'Monospace', cursive;
+    font-family: 'Monospace';
 }
 
 .date {
@@ -80,7 +80,7 @@ h4 {
 }
 
 #logout {
-    font-family: 'Monospace', cursive;
+    font-family: 'Monospace';
 
 }
 
