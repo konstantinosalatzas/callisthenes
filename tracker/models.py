@@ -16,3 +16,12 @@ class Training(models.Model):
 
     def __str__(self):
         return self.title
+
+class Exercise(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    reps = models.IntegerField(default=1)
+    sets = models.IntegerField(default=1)
+
+    def __str__(self):
+        return self.name
