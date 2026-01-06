@@ -4,11 +4,14 @@ from django.utils import timezone
 
 class Training(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200) # name
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     training_date = models.DateField(blank=True, null=True)
+    reps = models.IntegerField(default=1)
+    sets = models.IntegerField(default=1)
+    resistance_weight = models.FloatField(default=0.0)
 
     def publish(self):
         self.published_date = timezone.now()
@@ -16,12 +19,3 @@ class Training(models.Model):
 
     def __str__(self):
         return self.title
-
-class Exercise(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200)
-    reps = models.IntegerField(default=1)
-    sets = models.IntegerField(default=1)
-
-    def __str__(self):
-        return self.name
