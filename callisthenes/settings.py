@@ -30,7 +30,6 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-#    'training.apps.TrainingConfig',
 INSTALLED_APPS = [
     'tracker',
     'django.contrib.admin',

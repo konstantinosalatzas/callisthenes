@@ -18,7 +18,6 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views
 
-#    path('training/', include('training.urls')),
 urlpatterns = [
     path('', include('tracker.urls')),
     path('admin/', admin.site.urls),
