@@ -6,7 +6,7 @@ class TrainingForm(forms.ModelForm):
 
     class Meta:
         model = Training
-        fields = ('title', 'text', 'training_date')
+        fields = ('title', 'text', 'training_date', 'reps', 'sets')
         widgets = {
             'training_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
         }
