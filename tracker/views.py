@@ -6,7 +6,7 @@ from .models import Training
 from .forms import TrainingForm
 
 def training_list(request):
-    trainings = Training.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    trainings = Training.objects.filter(published_date__lte=timezone.now()).order_by('-training_date')
     return render(request, 'tracker/training_list.html', {'trainings': trainings})
 
 def training_detail(request, pk):
