@@ -26,3 +26,6 @@ class Set(models.Model):
     reps = models.IntegerField(default=1)
     resistance_weight = models.FloatField(default=0.0)
     comment = models.CharField(max_length=200)
+
+    def __str__(self):
+        return "{}, set no.{}".format(self.training.title, self.set_number)
