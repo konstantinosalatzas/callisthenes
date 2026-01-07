@@ -19,3 +19,10 @@ class Training(models.Model):
 
     def __str__(self):
         return self.title
+
+class Set(models.Model):
+    training = models.ForeignKey(Training, on_delete=models.CASCADE)
+    set_number = models.IntegerField(default=1)
+    reps = models.IntegerField(default=1)
+    resistance_weight = models.FloatField(default=0.0)
+    comment = models.CharField(max_length=200)
