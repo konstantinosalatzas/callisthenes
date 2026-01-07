@@ -20,4 +20,4 @@ python manage.py shell
 python manage.py createsuperuser
 
 # Test app
-python manage.py test tracker
+python manage.py test training
