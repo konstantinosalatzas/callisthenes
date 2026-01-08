@@ -10,8 +10,6 @@ class Training(models.Model):
     published_date = models.DateTimeField(blank=True, null=True)
     training_date = models.DateField(blank=True, null=True)
     sets = models.IntegerField(default=1)
-    reps = models.IntegerField(default=1)
-    resistance_weight = models.FloatField(default=0.0)
 
     def publish(self):
         self.published_date = timezone.now()
