@@ -75,3 +75,10 @@ def set_edit(request, pk):
     else:
         form = SetForm(instance=set)
     return render(request, 'tracker/set_edit.html', {'form': form})
+
+@login_required
+def set_publish(request, pk):
+    set = get_object_or_404(Set, pk=pk)
+    if request.method=='POST':
+        set.publish()
+    return redirect('set_detail', pk=pk)
