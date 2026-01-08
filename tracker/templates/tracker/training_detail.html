@@ -28,5 +28,15 @@
         <p>Sets: {{ training.sets|linebreaksbr }}</p>
         <p>Reps: {{ training.reps|linebreaksbr }}</p>
         <p>Weight/Resistance: {{ training.resistance_weight|linebreaksbr }}</p>
+
+        {% block subcontent %}
+            {% for set in sets %}
+                <article class="post">
+                    <h2><a href="{% url 'set_detail' pk=set.pk %}">{{ set.set_number }}</a></h2>
+                    <p>{{ training.reps|linebreaksbr }}</p>
+                </article>
+            {% endfor %}
+        {% endblock %}
+
     </article>
 {% endblock %}
