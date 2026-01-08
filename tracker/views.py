@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
 from .models import Training, Set
-from .forms import TrainingForm
+from .forms import TrainingForm, SetForm
 
 def training_list(request):
     trainings = Training.objects.filter(published_date__lte=timezone.now()).order_by('-training_date')
@@ -61,3 +61,17 @@ def training_remove(request, pk):
 def set_detail(request, pk):
     set = get_object_or_404(Set, pk=pk)
     return render(request, 'tracker/set_detail.html', {'set': set})
+
+@login_required
+def set_edit(request, pk):
+    set = get_object_or_404(Set, pk=pk)
+    if request.method == "POST":
+        form = SetForm(request.POST, instance=set)
+        if form.is_valid():
+            set = form.save(commit=False)
+            set.user = request.user
+            set.save()
+            return redirect('set_detail', pk=set.pk)
+    else:
+        form = SetForm(instance=set)
+    return render(request, 'tracker/set_edit.html', {'form': form})
