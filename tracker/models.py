@@ -9,7 +9,7 @@ class Training(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     training_date = models.DateField(blank=True, null=True)
-    sets = models.IntegerField(default=1)
+    sets = models.IntegerField(default=1) # TODO: create method
 
     def publish(self):
         self.published_date = timezone.now()
