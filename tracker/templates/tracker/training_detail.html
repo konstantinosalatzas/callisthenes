@@ -32,8 +32,10 @@
         {% block subcontent %}
             {% for set in sets %}
                 <article class="post">
-                    <h2><a href="{% url 'set_detail' pk=set.pk %}">{{ set.set_number }}</a></h2>
-                    <p>{{ training.reps|linebreaksbr }}</p>
+                    <h2><a href="{% url 'set_detail' pk=set.pk %}">Set {{ set.set_number }}</a></h2>
+                    <p>Reps: {{ training.reps|linebreaksbr }}</p>
+                    <p>Weight/Resistance: {{ training.reps|linebreaksbr }}</p>
+                    <p>Comments: {{ training.comment|linebreaksbr }}</p>
                 </article>
             {% endfor %}
         {% endblock %}
