@@ -63,6 +63,18 @@ def set_detail(request, pk):
     return render(request, 'tracker/set_detail.html', {'set': set})
 
 @login_required
+def set_new(request):
+    if request.method == "POST":
+        form = SetForm(request.POST)
+        if form.is_valid():
+            set = form.save(commit=False)
+            set.save()
+            return redirect('set_detail', pk=set.pk)
+    else:
+        form = SetForm()
+    return render(request, 'tracker/set_edit.html', {'form': form})
+
+@login_required
 def set_edit(request, pk):
     set = get_object_or_404(Set, pk=pk)
     if request.method == "POST":
