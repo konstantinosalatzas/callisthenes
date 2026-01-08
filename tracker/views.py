@@ -11,7 +11,9 @@ def training_list(request):
 
 def training_detail(request, pk):
     training = get_object_or_404(Training, pk=pk)
-    return render(request, 'tracker/training_detail.html', {'training': training})
+    sets = Set.objects.filter(training=pk).order_by('set_number')
+    return render(request, 'tracker/training_detail.html', {'training': training,
+                                                            'sets': sets})
 
 @login_required
 def training_new(request):
@@ -55,7 +57,3 @@ def training_remove(request, pk):
     #if request.method=='POST':
     training.delete()
     return redirect('training_list')
-
-def set_list(request):
-    sets = Set.objects.order_by('set_number')
-    return render(request, 'tracker/set_list.html', {'sets': sets})
