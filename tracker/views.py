@@ -82,7 +82,6 @@ def set_edit(request, pk):
         form = SetForm(request.POST, instance=set)
         if form.is_valid():
             set = form.save(commit=False)
-            set.user = request.user
             set.save()
             return redirect('set_detail', pk=set.pk)
     else:
