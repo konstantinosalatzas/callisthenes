@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Training
+from .models import Training, Set
 
 class TrainingForm(forms.ModelForm):
 
@@ -13,3 +13,9 @@ class TrainingForm(forms.ModelForm):
             'reps': forms.NumberInput(attrs={'type': 'number', 'min': '1', 'class': 'form-control'}),
             'resistance_weight': forms.NumberInput(attrs={'type': 'number', 'class': 'form-control'}),
         }
+
+class SetForm(forms.ModelForm):
+
+    class Meta:
+        model = Set
+        fields = ('set_number', 'reps')
