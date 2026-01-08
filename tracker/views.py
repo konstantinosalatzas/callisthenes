@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
-from .models import Training
+from .models import Training, Set
 from .forms import TrainingForm
 
 def training_list(request):
@@ -55,3 +55,7 @@ def training_remove(request, pk):
     #if request.method=='POST':
     training.delete()
     return redirect('training_list')
+
+def set_list(request):
+    sets = Set.objects.order_by('set_number')
+    return render(request, 'tracker/set_list.html', {'sets': sets})
