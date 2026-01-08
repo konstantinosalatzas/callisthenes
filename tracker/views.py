@@ -82,3 +82,10 @@ def set_publish(request, pk):
     if request.method=='POST':
         set.publish()
     return redirect('set_detail', pk=pk)
+
+@login_required
+def set_remove(request, pk):
+    set = get_object_or_404(Set, pk=pk)
+    #if request.method=='POST':
+    set.delete()
+    return redirect('training_list') # TODO: go to training detail
