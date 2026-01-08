@@ -57,3 +57,7 @@ def training_remove(request, pk):
     #if request.method=='POST':
     training.delete()
     return redirect('training_list')
+
+def set_detail(request, pk):
+    set = get_object_or_404(Set, pk=pk)
+    return render(request, 'tracker/set_detail.html', {'set': set})
