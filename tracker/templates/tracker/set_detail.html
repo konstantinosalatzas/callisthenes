@@ -1,0 +1,18 @@
+{% extends 'tracker/base.html' %}
+
+{% block content %}
+    <article class="post">
+        <aside class="actions">
+            {% if user.is_authenticated %}
+                <a class="btn btn-secondary" href="{% url 'set_edit' pk=set.pk %}">
+                    {% include './icons/pencil-fill.svg' %}
+                </a>
+                <a class="btn btn-secondary" href="{% url 'set_remove' pk=set.pk %}">
+                    {% include './icons/trash-fill.svg' %}
+                </a>
+            {% endif %}
+        </aside>
+        <h2>{{ set.set_number }}</h2>
+        <p>Reps: {{ set.reps|linebreaksbr }}</p>
+    </article>
+{% endblock %}
