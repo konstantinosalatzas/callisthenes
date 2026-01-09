@@ -5,7 +5,6 @@ from django.utils import timezone
 class Training(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200) # name
-    text = models.CharField(max_length=200)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     training_date = models.DateField(blank=True, null=True)
