@@ -12,7 +12,7 @@
                 </a>
             {% endif %}
         </aside>
-        <h2>{{ set.training.title }} - Set: {{ set.set_number }}</h2>
+        <h2><a href="{% url 'training_detail' pk=set.training.pk %}">{{ set.training.title }}</a> - Set: {{ set.set_number }}</h2>
         <p>Reps: {{ set.reps|linebreaksbr }}</p>
         <p>Weight/Resistance: {{ set.resistance_weight|linebreaksbr }}</p>
         <p>Comments: {{ set.comment|linebreaksbr }}</p>
