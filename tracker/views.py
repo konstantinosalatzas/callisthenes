@@ -11,6 +11,7 @@ def training_list(request):
         trainings = Training.objects.filter(user=request.user, published_date__lte=timezone.now()).order_by('-training_date')
     return render(request, 'tracker/training_list.html', {'trainings': trainings})
 
+@login_required
 def training_detail(request, pk):
     training = get_object_or_404(Training, pk=pk)
     sets = Set.objects.filter(training=pk).order_by('set_number')
