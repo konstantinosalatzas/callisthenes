@@ -6,7 +6,9 @@ from .models import Training, Set
 from .forms import TrainingForm, SetForm
 
 def training_list(request):
-    trainings = Training.objects.filter(published_date__lte=timezone.now()).order_by('-training_date')
+    trainings = []
+    if request.user.is_authenticated:
+        trainings = Training.objects.filter(user=request.user, published_date__lte=timezone.now()).order_by('-training_date')
     return render(request, 'tracker/training_list.html', {'trainings': trainings})
 
 def training_detail(request, pk):
