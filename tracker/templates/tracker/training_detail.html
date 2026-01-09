@@ -35,7 +35,7 @@
                 <article class="post">
                     <h2><a href="{% url 'set_detail' pk=set.pk %}">Set {{ set.set_number }}</a></h2>
                     <p>Reps: {{ set.reps|linebreaksbr }}</p>
-                    <p>Weight/Resistance: {{ set.resistance_weight|linebreaksbr }} kg</p>
+                    <p>Weight/Resistance (kg): {{ set.resistance_weight|linebreaksbr }}</p>
                     <p>Comments: {{ set.comment|linebreaksbr }}</p>
                 </article>
             {% endfor %}
