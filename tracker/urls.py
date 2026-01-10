@@ -15,4 +15,5 @@ urlpatterns = [
     path('set/<int:pk>/edit/', views.set_edit, name='set_edit'),
     path('set/<int:pk>/publish/', views.set_publish, name='set_publish'),
     path('set/<int:pk>/remove/', views.set_remove, name='set_remove'),
+    path('meal', views.meal_list, name='meal_list'),
 ]
