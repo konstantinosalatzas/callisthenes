@@ -18,7 +18,7 @@ def training_list(request):
 @login_required
 def training_detail(request, pk):
     training = get_object_or_404(Training, pk=pk, user=request.user)
-    sets = Set.objects.filter(training=pk).order_by('set_number')
+    sets = Set.objects.filter(training=pk).order_by('name', 'set_number')
     return render(request, 'tracker/training_detail.html', {'training': training,
                                                             'sets': sets})
 
