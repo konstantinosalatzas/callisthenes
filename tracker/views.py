@@ -5,6 +5,9 @@ from django.contrib.auth.decorators import login_required
 from .models import Training, Set
 from .forms import TrainingForm, SetForm
 
+def index(request):
+    return render(request, 'tracker/index.html')
+
 def training_list(request):
     trainings = []
     if request.user.is_authenticated:
