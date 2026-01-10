@@ -27,7 +27,6 @@
         {% endif %}
         <h2>{{ training.title }}</h2>
         <p>Date: {{ training.training_date|linebreaksbr }}</p>
-        <p>Sets: {{ training.sets|linebreaksbr }}</p>
 
         {% block subcontent %}
             {% for set in sets %}
