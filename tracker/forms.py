@@ -15,7 +15,7 @@ class SetForm(forms.ModelForm):
 
     class Meta:
         model = Set
-        fields = ('set_number', 'reps', 'resistance_weight', 'comment')
+        fields = ('name', 'set_number', 'reps', 'resistance_weight', 'comment')
         widgets = {
             'set_number': forms.NumberInput(attrs={'type': 'number', 'min': '1', 'class': 'form-control'}),
             'reps': forms.NumberInput(attrs={'type': 'number', 'min': '1', 'class': 'form-control'}),
