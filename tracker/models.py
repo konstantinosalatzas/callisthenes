@@ -18,6 +18,7 @@ class Training(models.Model):
 
 class Set(models.Model):
     training = models.ForeignKey(Training, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
     set_number = models.IntegerField(default=1)
     reps = models.IntegerField(default=1)
     resistance_weight = models.FloatField(default=0.0)
