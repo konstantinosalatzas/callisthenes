@@ -8,6 +8,7 @@ from .forms import TrainingForm, SetForm
 def index(request):
     return render(request, 'tracker/index.html')
 
+@login_required
 def training_list(request):
     trainings = []
     if request.user.is_authenticated:
