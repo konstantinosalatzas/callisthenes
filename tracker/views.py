@@ -13,7 +13,7 @@ def training_list(request):
 
 @login_required
 def training_detail(request, pk):
-    training = get_object_or_404(Training, pk=pk)
+    training = get_object_or_404(Training, pk=pk, user=request.user)
     sets = Set.objects.filter(training=pk).order_by('set_number')
     return render(request, 'tracker/training_detail.html', {'training': training,
                                                             'sets': sets})
@@ -34,7 +34,7 @@ def training_new(request):
 
 @login_required
 def training_edit(request, pk):
-    training = get_object_or_404(Training, pk=pk)
+    training = get_object_or_404(Training, pk=pk, user=request.user)
     if request.method == "POST":
         form = TrainingForm(request.POST, instance=training)
         if form.is_valid():
@@ -49,14 +49,14 @@ def training_edit(request, pk):
 
 @login_required
 def training_publish(request, pk):
-    training = get_object_or_404(Training, pk=pk)
+    training = get_object_or_404(Training, pk=pk, user=request.user)
     if request.method=='POST':
         training.publish()
     return redirect('training_detail', pk=pk)
 
 @login_required
 def training_remove(request, pk):
-    training = get_object_or_404(Training, pk=pk)
+    training = get_object_or_404(Training, pk=pk, user=request.user)
     #if request.method=='POST':
     training.delete()
     return redirect('training_list')
