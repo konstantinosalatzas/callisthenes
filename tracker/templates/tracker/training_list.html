@@ -7,7 +7,7 @@
                 {{ training.published_date }}
             </time>
             <h2><a href="{% url 'training_detail' pk=training.pk %}">{{ training.title }}</a></h2>
-            <p>Date: {{ training.training_date|linebreaksbr }}</p>
+            <p>{{ training.training_date|linebreaksbr }}</p>
         </article>
     {% endfor %}
 {% endblock %}
