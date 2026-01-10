@@ -1,0 +1,13 @@
+{% extends 'tracker/base.html' %}
+
+{% block content %}
+    {% for meal in meals %}
+        <article class="post">
+            <time class="date">
+                {{ meal.published_date }}
+            </time>
+            <h2>{{ meal.name }}</h2>
+            <p><i>{{ meal.meal_date|linebreaksbr }}</i></p>
+        </article>
+    {% endfor %}
+{% endblock %}
