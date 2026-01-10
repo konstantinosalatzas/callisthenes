@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
-from .models import Training, Set
+from .models import Training, Set, Meal
 from .forms import TrainingForm, SetForm
 
 def index(request):
@@ -115,3 +115,10 @@ def set_remove(request, pk):
     #if request.method=='POST':
     set.delete()
     return redirect('training_detail', pk=training_pk)
+
+@login_required
+def meal_list(request):
+    meals = []
+    if request.user.is_authenticated:
+        meals = Meal.objects.filter(user=request.user, published_date__lte=timezone.now()).order_by('-meal_date')
+    return render(request, 'tracker/meal_list.html', {'meals': meals})
