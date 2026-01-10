@@ -64,10 +64,12 @@ def training_remove(request, pk):
 @login_required
 def set_detail(request, pk):
     set = get_object_or_404(Set, pk=pk)
+    get_object_or_404(Training, pk=set.training.pk, user=request.user)
     return render(request, 'tracker/set_detail.html', {'set': set})
 
 @login_required
 def set_new(request, pk):
+    get_object_or_404(Training, pk=pk, user=request.user)
     if request.method == "POST":
         form = SetForm(request.POST)
         if form.is_valid():
@@ -82,6 +84,7 @@ def set_new(request, pk):
 @login_required
 def set_edit(request, pk):
     set = get_object_or_404(Set, pk=pk)
+    get_object_or_404(Training, pk=set.training.pk, user=request.user)
     if request.method == "POST":
         form = SetForm(request.POST, instance=set)
         if form.is_valid():
@@ -95,6 +98,7 @@ def set_edit(request, pk):
 @login_required
 def set_publish(request, pk):
     set = get_object_or_404(Set, pk=pk)
+    get_object_or_404(Training, pk=set.training.pk, user=request.user)
     if request.method=='POST':
         set.publish()
     return redirect('set_detail', pk=pk)
@@ -102,6 +106,7 @@ def set_publish(request, pk):
 @login_required
 def set_remove(request, pk):
     set = get_object_or_404(Set, pk=pk)
+    get_object_or_404(Training, pk=set.training.pk, user=request.user)
     training_pk = set.training.pk
     #if request.method=='POST':
     set.delete()
