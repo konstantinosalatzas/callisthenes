@@ -14,7 +14,7 @@ class Training(models.Model):
         self.save()
 
     def __str__(self):
-        return self.title
+        return "{}, {} @ {}".format(self.user, self.title, self.training_date)
 
 class Set(models.Model):
     training = models.ForeignKey(Training, on_delete=models.CASCADE)
