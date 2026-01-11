@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Training, Set
+from .models import Training, Set, Meal
 
 class TrainingForm(forms.ModelForm):
 
@@ -20,4 +20,13 @@ class SetForm(forms.ModelForm):
             'set_number': forms.NumberInput(attrs={'type': 'number', 'min': '1', 'class': 'form-control'}),
             'reps': forms.NumberInput(attrs={'type': 'number', 'min': '1', 'class': 'form-control'}),
             'resistance_weight': forms.NumberInput(attrs={'type': 'number', 'step': '0.25', 'class': 'form-control'}),
+        }
+
+class MealForm(forms.ModelForm):
+
+    class Meta:
+        model = Meal
+        fields = ('title', 'meal_date')
+        widgets = {
+            'meal_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
         }
