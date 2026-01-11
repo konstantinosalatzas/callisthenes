@@ -206,3 +206,11 @@ def ingredient_edit(request, pk):
     else:
         form = IngredientForm(instance=ingredient)
     return render(request, 'tracker/ingredient_edit.html', {'form': form})
+
+@login_required
+def ingredient_publish(request, pk):
+    ingredient = get_object_or_404(Ingredient, pk=pk)
+    get_object_or_404(Meal, pk=ingredient.meal.pk, user=request.user)
+    if request.method=='POST':
+        ingredient.publish()
+    return redirect('ingredient_detail', pk=pk)
