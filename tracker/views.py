@@ -172,3 +172,9 @@ def meal_remove(request, pk):
     #if request.method=='POST':
     meal.delete()
     return redirect('meal_list')
+
+@login_required
+def ingredient_detail(request, pk):
+    ingredient = get_object_or_404(Ingredient, pk=pk)
+    get_object_or_404(Meal, pk=ingredient.meal.pk, user=request.user)
+    return render(request, 'tracker/ingredient_detail.html', {'ingredient': ingredient})
