@@ -158,3 +158,10 @@ def meal_edit(request, pk):
     else:
         form = MealForm(instance=meal)
     return render(request, 'tracker/meal_edit.html', {'form': form})
+
+@login_required
+def meal_publish(request, pk):
+    meal = get_object_or_404(Meal, pk=pk, user=request.user)
+    if request.method=='POST':
+        meal.publish()
+    return redirect('meal_detail', pk=pk)
