@@ -214,3 +214,12 @@ def ingredient_publish(request, pk):
     if request.method=='POST':
         ingredient.publish()
     return redirect('ingredient_detail', pk=pk)
+
+@login_required
+def ingredient_remove(request, pk):
+    ingredient = get_object_or_404(Ingredient, pk=pk)
+    get_object_or_404(Meal, pk=ingredient.meal.pk, user=request.user)
+    meal_pk = ingredient.meal.pk
+    #if request.method=='POST':
+    ingredient.delete()
+    return redirect('meal_detail', pk=meal_pk)
