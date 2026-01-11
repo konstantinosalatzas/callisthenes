@@ -25,7 +25,8 @@ class Set(models.Model):
     comment = models.CharField(max_length=200)
 
     def __str__(self):
-        return "{} (set {})".format(self.training.title, self.set_number)
+        return "{}, {} @ {} - {} (set {})".format(self.training.user, self.training.title, self.training.training_date,
+                                                  self.name, self.set_number)
 
 class Meal(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
