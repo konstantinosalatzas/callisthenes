@@ -195,7 +195,7 @@ def ingredient_new(request, pk):
 
 @login_required
 def ingredient_edit(request, pk):
-    ingredient = get_object_or_404(Meal, pk=pk)
+    ingredient = get_object_or_404(Ingredient, pk=pk)
     get_object_or_404(Meal, pk=ingredient.meal.pk, user=request.user)
     if request.method == "POST":
         form = IngredientForm(request.POST, instance=ingredient)
