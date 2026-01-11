@@ -143,3 +143,18 @@ def meal_new(request):
     else:
         form = MealForm()
     return render(request, 'tracker/meal_edit.html', {'form': form})
+
+@login_required
+def meal_edit(request, pk):
+    meal = get_object_or_404(Meal, pk=pk, user=request.user)
+    if request.method == "POST":
+        form = MealForm(request.POST, instance=meal)
+        if form.is_valid():
+            meal = form.save(commit=False)
+            meal.user = request.user
+            meal.published_date = timezone.now()
+            meal.save()
+            return redirect('meal_detail', pk=meal.pk)
+    else:
+        form = MealForm(instance=meal)
+    return render(request, 'tracker/meal_edit.html', {'form': form})
