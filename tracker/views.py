@@ -8,6 +8,8 @@ from .forms import TrainingForm, SetForm, MealForm, IngredientForm
 def index(request):
     return render(request, 'tracker/index.html')
 
+# Training model
+
 @login_required
 def training_list(request):
     trainings = []
@@ -65,6 +67,8 @@ def training_remove(request, pk):
     training.delete()
     return redirect('training_list')
 
+# Set model
+
 @login_required
 def set_detail(request, pk):
     set = get_object_or_404(Set, pk=pk)
@@ -115,6 +119,8 @@ def set_remove(request, pk):
     #if request.method=='POST':
     set.delete()
     return redirect('training_detail', pk=training_pk)
+
+# Meal model
 
 @login_required
 def meal_list(request):
@@ -172,6 +178,8 @@ def meal_remove(request, pk):
     #if request.method=='POST':
     meal.delete()
     return redirect('meal_list')
+
+# Ingredient model
 
 @login_required
 def ingredient_detail(request, pk):
