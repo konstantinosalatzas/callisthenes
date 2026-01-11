@@ -165,3 +165,10 @@ def meal_publish(request, pk):
     if request.method=='POST':
         meal.publish()
     return redirect('meal_detail', pk=pk)
+
+@login_required
+def meal_remove(request, pk):
+    meal = get_object_or_404(Meal, pk=pk, user=request.user)
+    #if request.method=='POST':
+    meal.delete()
+    return redirect('meal_list')
