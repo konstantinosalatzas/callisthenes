@@ -33,7 +33,7 @@ class Meal(models.Model):
     title = models.CharField(max_length=200)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-    meal_date = models.DateField(blank=True, null=True)
+    meal_date = models.DateField(blank=True, null=True) # number?
 
     def publish(self):
         self.published_date = timezone.now()
@@ -41,3 +41,13 @@ class Meal(models.Model):
 
     def __str__(self):
         return "{}, {} @ {}".format(self.user, self.title, self.meal_date)
+
+class Ingredient(models.Model):
+    meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    quantity = models.FloatField(default=0.0)
+    unit = models.CharField(max_length=200) # unit of measurement
+
+    def __str__(self):
+        return "{}, {} @ {} - {}".format(self.meal.user, self.meal.title, self.meal.meal_date,
+                                         self.name)
