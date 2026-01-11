@@ -1,0 +1,20 @@
+{% extends 'tracker/base.html' %}
+
+{% block content %}
+    <article class="post">
+        <aside class="actions">
+            {% if user.is_authenticated %}
+                <a class="btn btn-secondary" href="{% url 'ingredient_edit' pk=ingredient.pk %}">
+                    {% include './icons/pencil-fill.svg' %}
+                </a>
+                <a class="btn btn-secondary" href="{% url 'ingredient_remove' pk=ingredient.pk %}">
+                    {% include './icons/trash-fill.svg' %}
+                </a>
+            {% endif %}
+        </aside>
+        <h2>{{ ingredient.name }}</h2>
+        <p><i><a href="{% url 'meal_detail' pk=ingredient.meal.pk %}">{{ ingredient.meal.title }} @ {{ ingredient.meal.meal_date }}</a></i><p>
+        <p>{{ ingredient.quantity|linebreaksbr }}</p>
+        <p>{{ ingredient.unit|linebreaksbr }}</p>
+    </article>
+{% endblock %}
