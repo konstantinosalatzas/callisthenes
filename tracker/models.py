@@ -40,4 +40,4 @@ class Meal(models.Model):
         self.save()
 
     def __str__(self):
-        return self.title
+        return "{}, {} @ {}".format(self.user, self.title, self.meal_date)
