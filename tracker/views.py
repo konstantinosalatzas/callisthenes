@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
-from .models import Training, Set, Meal
+from .models import Training, Set, Meal, Ingredient
 from .forms import TrainingForm, SetForm
 
 def index(request):
@@ -122,3 +122,10 @@ def meal_list(request):
     if request.user.is_authenticated:
         meals = Meal.objects.filter(user=request.user, published_date__lte=timezone.now()).order_by('-meal_date')
     return render(request, 'tracker/meal_list.html', {'meals': meals})
+
+@login_required
+def meal_detail(request, pk):
+    meal = get_object_or_404(Meal, pk=pk, user=request.user)
+    ingredients = Ingredient.objects.filter(meal=pk).order_by('name')
+    return render(request, 'tracker/meal_detail.html', {'meal': meal,
+                                                        'ingredients': ingredients})
