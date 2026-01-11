@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
 from .models import Training, Set, Meal, Ingredient
-from .forms import TrainingForm, SetForm
+from .forms import TrainingForm, SetForm, MealForm
 
 def index(request):
     return render(request, 'tracker/index.html')
@@ -129,3 +129,17 @@ def meal_detail(request, pk):
     ingredients = Ingredient.objects.filter(meal=pk).order_by('name')
     return render(request, 'tracker/meal_detail.html', {'meal': meal,
                                                         'ingredients': ingredients})
+
+@login_required
+def meal_new(request):
+    if request.method == "POST":
+        form = MealForm(request.POST)
+        if form.is_valid():
+            meal = form.save(commit=False)
+            meal.user = request.user
+            meal.published_date = timezone.now()
+            meal.save()
+            return redirect('meal_detail', pk=meal.pk)
+    else:
+        form = MealForm()
+    return render(request, 'tracker/meal_edit.html', {'form': form})
