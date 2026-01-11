@@ -192,3 +192,17 @@ def ingredient_new(request, pk):
     else:
         form = IngredientForm()
     return render(request, 'tracker/ingredient_edit.html', {'form': form})
+
+@login_required
+def ingredient_edit(request, pk):
+    ingredient = get_object_or_404(Meal, pk=pk)
+    get_object_or_404(Meal, pk=ingredient.meal.pk, user=request.user)
+    if request.method == "POST":
+        form = IngredientForm(request.POST, instance=ingredient)
+        if form.is_valid():
+            ingredient = form.save(commit=False)
+            ingredient.save()
+            return redirect('ingredient_detail', pk=ingredient.pk)
+    else:
+        form = IngredientForm(instance=ingredient)
+    return render(request, 'tracker/ingredient_edit.html', {'form': form})
