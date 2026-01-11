@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
 from .models import Training, Set, Meal, Ingredient
-from .forms import TrainingForm, SetForm, MealForm
+from .forms import TrainingForm, SetForm, MealForm, IngredientForm
 
 def index(request):
     return render(request, 'tracker/index.html')
@@ -178,3 +178,17 @@ def ingredient_detail(request, pk):
     ingredient = get_object_or_404(Ingredient, pk=pk)
     get_object_or_404(Meal, pk=ingredient.meal.pk, user=request.user)
     return render(request, 'tracker/ingredient_detail.html', {'ingredient': ingredient})
+
+@login_required
+def ingredient_new(request, pk):
+    get_object_or_404(Meal, pk=pk, user=request.user)
+    if request.method == "POST":
+        form = IngredientForm(request.POST)
+        if form.is_valid():
+            ingredient = form.save(commit=False)
+            ingredient.meal = get_object_or_404(Meal, pk=pk)
+            ingredient.save()
+            return redirect('ingredient_detail', pk=ingredient.pk)
+    else:
+        form = IngredientForm()
+    return render(request, 'tracker/ingredient_edit.html', {'form': form})
