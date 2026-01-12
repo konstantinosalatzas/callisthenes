@@ -16,5 +16,8 @@
         <p><i><a href="{% url 'meal_detail' pk=ingredient.meal.pk %}">{{ ingredient.meal.title }} @ {{ ingredient.meal.meal_date }}</a></i><p>
         <p>Quantity: {{ ingredient.quantity|linebreaksbr }}</p>
         <p>Unit of measurement: {{ ingredient.unit|linebreaksbr }}</p>
+        <p>Protein: {{ ingredient.quantity|linebreaksbr }} g</p>
+        <p>Carbohydrates: {{ ingredient.quantity|linebreaksbr }} g</p>
+        <p>Fats: {{ ingredient.quantity|linebreaksbr }} g</p>
     </article>
 {% endblock %}
