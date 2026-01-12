@@ -33,6 +33,7 @@
                 <article class="post">
                     <h2><a href="{% url 'ingredient_detail' pk=ingredient.pk %}">{{ ingredient.name|linebreaksbr }}</a></h2>
                     <p>{{ ingredient.quantity|linebreaksbr }} {{ ingredient.unit|linebreaksbr }}</p>
+                    <p>Protein: {{ ingredient.protein|linebreaksbr }} g, Carbohydrates: {{ ingredient.carbs|linebreaksbr }} g, Fats: {{ ingredient.fats|linebreaksbr }} g</p>
                 </article>
             {% endfor %}
         {% endblock %}
