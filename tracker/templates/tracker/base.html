@@ -12,10 +12,10 @@
                 <div class="container">
                     {% if user.is_authenticated %}
                     <a href="{% url 'meal_new' %}" class="top-menu">
-                        {% include './icons/file-earmark-plus.svg' %}
+                        {% include './icons/file-earmark-plus.svg' %} Meal
                     </a>
                     <a href="{% url 'training_new' %}" class="top-menu">
-                        {% include './icons/file-earmark-plus.svg' %}
+                        {% include './icons/file-earmark-plus.svg' %} Training
                     </a>
                     <p id="logout" class="top-menu"> {{ user.username }} <small><form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit">Log out</button></form></small></p>
                     {% else %}
