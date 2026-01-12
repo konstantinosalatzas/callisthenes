@@ -35,7 +35,10 @@ class IngredientForm(forms.ModelForm):
 
     class Meta:
         model = Ingredient
-        fields = ('name', 'quantity', 'unit')
+        fields = ('name', 'quantity', 'unit', 'protein', 'carbs', 'fats')
         widgets = {
             'quantity': forms.NumberInput(attrs={'type': 'number', 'min': '0', 'step': '0.1', 'class': 'form-control'}),
+            'protein': forms.NumberInput(attrs={'type': 'number', 'min': '0', 'step': '0.1', 'class': 'form-control'}),
+            'carbs': forms.NumberInput(attrs={'type': 'number', 'min': '0', 'step': '0.1', 'class': 'form-control'}),
+            'fats': forms.NumberInput(attrs={'type': 'number', 'min': '0', 'step': '0.1', 'class': 'form-control'}),
         }
