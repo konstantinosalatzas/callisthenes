@@ -47,6 +47,9 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=200)
     quantity = models.FloatField(default=0.0)
     unit = models.CharField(max_length=200) # unit of measurement
+    protein = models.FloatField(default=0.0)
+    carbs = models.FloatField(default=0.0)
+    fats = models.FloatField(default=0.0)
 
     def __str__(self):
         return "{}, {} @ {} - {}".format(self.meal.user, self.meal.title, self.meal.meal_date,
