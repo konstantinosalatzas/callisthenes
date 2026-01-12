@@ -32,8 +32,7 @@
             {% for ingredient in ingredients %}
                 <article class="post">
                     <h2><a href="{% url 'ingredient_detail' pk=ingredient.pk %}">{{ ingredient.name|linebreaksbr }}</a></h2>
-                    <p>{{ ingredient.quantity|linebreaksbr }}</p>
-                    <p>{{ ingredient.unit|linebreaksbr }}</p>
+                    <p>{{ ingredient.quantity|linebreaksbr }} {{ ingredient.unit|linebreaksbr }}</p>
                 </article>
             {% endfor %}
         {% endblock %}
