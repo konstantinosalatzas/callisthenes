@@ -26,7 +26,7 @@
             </aside>
         {% endif %}
         <h2>{{ training.title }}</h2>
-        <p><i>{{ training.training_date|linebreaksbr }}</i></p>
+        <p><i>at {{ training.training_date|linebreaksbr }}</i></p>
 
         {% block subcontent %}
             {% for set in sets %}
