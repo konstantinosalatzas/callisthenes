@@ -26,7 +26,7 @@
             </aside>
         {% endif %}
         <h2>{{ meal.title }}</h2>
-        <p><i>{{ meal.meal_date|linebreaksbr }}</i></p>
+        <p><i>at {{ meal.meal_date|linebreaksbr }}</i></p>
 
         {% block subcontent %}
             {% for ingredient in ingredients %}

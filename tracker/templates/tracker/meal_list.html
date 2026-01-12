@@ -7,7 +7,7 @@
                 {{ meal.published_date }}
             </time>
             <h2><a href="{% url 'meal_detail' pk=meal.pk %}">{{ meal.title }}</a></h2>
-            <p><i>{{ meal.meal_date|linebreaksbr }}</i></p>
+            <p><i>at {{ meal.meal_date|linebreaksbr }}</i></p>
         </article>
     {% endfor %}
 {% endblock %}
