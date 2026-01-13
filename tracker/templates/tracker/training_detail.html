@@ -10,7 +10,7 @@
                 <a class="btn btn-secondary" href="{% url 'training_edit' pk=training.pk %}">
                     {% include './icons/pencil-fill.svg' %}
                 </a>
-                <a class="btn btn-secondary" href="{% url 'training_remove' pk=training.pk %}">
+                <a class="btn btn-secondary" href="{% url 'training_remove' pk=training.pk %}" onclick="return confirm('Remove this training?');">
                     {% include './icons/trash-fill.svg' %}
                 </a>
             {% endif %}
