@@ -7,7 +7,7 @@
                 <a class="btn btn-secondary" href="{% url 'ingredient_edit' pk=ingredient.pk %}">
                     {% include './icons/pencil-fill.svg' %}
                 </a>
-                <a class="btn btn-secondary" href="{% url 'ingredient_remove' pk=ingredient.pk %}">
+                <a class="btn btn-secondary" href="{% url 'ingredient_remove' pk=ingredient.pk %}" onclick="return confirm('Remove this ingredient?');">
                     {% include './icons/trash-fill.svg' %}
                 </a>
             {% endif %}
