@@ -10,7 +10,7 @@
                 <a class="btn btn-secondary" href="{% url 'meal_edit' pk=meal.pk %}">
                     {% include './icons/pencil-fill.svg' %}
                 </a>
-                <a class="btn btn-secondary" href="{% url 'meal_remove' pk=meal.pk %}">
+                <a class="btn btn-secondary" href="{% url 'meal_remove' pk=meal.pk %}" onclick="return confirm('Remove this meal?');">
                     {% include './icons/trash-fill.svg' %}
                 </a>
             {% endif %}
