@@ -1,9 +1,0 @@
-<h1>{{ training.training_title }}</h1>
-
-<ul>
-{% for performance in training.performance_set.all %}
-    <li>{{ performance.performance_text }} -- {{ performance.sets }} log{{ performance.sets|pluralize }}</li>
-{% endfor %}
-</ul>
-
-<a href="{% url 'training:detail' training.id %}">Log again?</a>
