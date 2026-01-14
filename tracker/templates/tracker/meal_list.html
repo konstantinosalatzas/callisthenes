@@ -1,7 +1,12 @@
 {% extends 'tracker/base.html' %}
 
 {% block content %}
-    <h2>My meals:</h2>
+    <h2>
+        <a class="btn btn-secondary" href="{% url 'index' %}">
+            {% include './icons/arrow-left.svg' %}
+        </a>
+        My meals:
+    </h2>
     {% for meal in meals %}
         <article class="post">
             <time class="date">
