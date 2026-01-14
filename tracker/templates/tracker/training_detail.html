@@ -29,9 +29,8 @@
             <a class="btn btn-secondary" href="{% url 'training_list' %}">
                 {% include './icons/arrow-left.svg' %}
             </a>
-            {{ training.title }}
+            {{ training.title }} ({{ training.training_date|linebreaksbr }})
         </h2>
-        <p><i>at {{ training.training_date|linebreaksbr }}</i></p>
 
         {% block subcontent %}
             {% for set in sets %}
