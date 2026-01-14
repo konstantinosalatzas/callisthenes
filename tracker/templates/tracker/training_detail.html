@@ -25,7 +25,12 @@
                 <a class="btn btn-secondary" role="button" href="{% url 'training_publish' pk=training.pk %}">Publish</a>
             </aside>
         {% endif %}
-        <h2>{{ training.title }}</h2>
+        <h2>
+            <a class="btn btn-secondary" href="{% url 'training_list' %}">
+                {% include './icons/arrow-left.svg' %}
+            </a>
+            {{ training.title }}
+        </h2>
         <p><i>at {{ training.training_date|linebreaksbr }}</i></p>
 
         {% block subcontent %}
