@@ -12,7 +12,12 @@
                 </a>
             {% endif %}
         </aside>
-        <h2>{{ set.name }} (set {{ set.set_number }})</h2>
+        <h2>
+            <a class="btn btn-secondary" href="{% url 'training_detail' pk=set.training.pk %}">
+                {% include './icons/arrow-left.svg' %}
+            </a>
+            {{ set.name }} (set {{ set.set_number }})
+        </h2>
         <p><i>in <a href="{% url 'training_detail' pk=set.training.pk %}">{{ set.training.title }} @ {{ set.training.training_date }}</a></i><p>
         <p>Reps: {{ set.reps|linebreaksbr }}</p>
         <p>Weight/Resistance (kg): {{ set.resistance_weight|linebreaksbr }}</p>
