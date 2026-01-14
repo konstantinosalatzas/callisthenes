@@ -25,7 +25,12 @@
                 <a class="btn btn-secondary" role="button" href="{% url 'meal_publish' pk=meal.pk %}">Publish</a>
             </aside>
         {% endif %}
-        <h2>{{ meal.title }}</h2>
+        <h2>
+            <a class="btn btn-secondary" href="{% url 'meal_list' %}">
+                {% include './icons/arrow-left.svg' %}
+            </a>
+            {{ meal.title }}
+        </h2>
         <p><i>at {{ meal.meal_date|linebreaksbr }}</i></p>
 
         {% block subcontent %}
