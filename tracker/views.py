@@ -189,7 +189,7 @@ def ingredient_detail(request, pk):
 
 @login_required
 def ingredient_new(request, pk):
-    get_object_or_404(Meal, pk=pk, user=request.user)
+    meal = get_object_or_404(Meal, pk=pk, user=request.user)
     if request.method == "POST":
         form = IngredientForm(request.POST)
         if form.is_valid():
@@ -199,7 +199,7 @@ def ingredient_new(request, pk):
             return redirect('ingredient_detail', pk=ingredient.pk)
     else:
         form = IngredientForm()
-    return render(request, 'tracker/ingredient_edit.html', {'form': form})
+    return render(request, 'tracker/ingredient_new.html', {'form': form, 'meal': meal})
 
 @login_required
 def ingredient_edit(request, pk):
