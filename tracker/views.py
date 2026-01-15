@@ -77,7 +77,7 @@ def set_detail(request, pk):
 
 @login_required
 def set_new(request, pk):
-    get_object_or_404(Training, pk=pk, user=request.user)
+    training = get_object_or_404(Training, pk=pk, user=request.user)
     if request.method == "POST":
         form = SetForm(request.POST)
         if form.is_valid():
@@ -87,7 +87,7 @@ def set_new(request, pk):
             return redirect('set_detail', pk=set.pk)
     else:
         form = SetForm()
-    return render(request, 'tracker/set_edit.html', {'form': form})
+    return render(request, 'tracker/set_new.html', {'form': form, 'training': training})
 
 @login_required
 def set_edit(request, pk):
