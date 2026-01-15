@@ -101,7 +101,7 @@ def set_edit(request, pk):
             return redirect('set_detail', pk=set.pk)
     else:
         form = SetForm(instance=set)
-    return render(request, 'tracker/set_edit.html', {'form': form})
+    return render(request, 'tracker/set_edit.html', {'form': form, 'set': set})
 
 @login_required
 def set_publish(request, pk):

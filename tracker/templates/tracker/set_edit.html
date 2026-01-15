@@ -6,5 +6,5 @@
         {{ form.as_p }}
         <button type="submit" class="save btn btn-secondary">Save</button>
     </form>
-    <a class="btn btn-secondary" href="{% url 'training_list' %}">Cancel</a>
+    <a class="btn btn-secondary" href="{% url 'set_detail' pk=set.pk %}">Cancel</a>
 {% endblock %}
