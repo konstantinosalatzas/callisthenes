@@ -1,7 +1,7 @@
 {% extends 'tracker/base.html' %}
 
 {% block content %}
-    <h2>Meal information</h2>
+    <h2>Edit meal</h2>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-secondary">Save</button>
