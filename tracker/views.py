@@ -213,7 +213,7 @@ def ingredient_edit(request, pk):
             return redirect('ingredient_detail', pk=ingredient.pk)
     else:
         form = IngredientForm(instance=ingredient)
-    return render(request, 'tracker/ingredient_edit.html', {'form': form})
+    return render(request, 'tracker/ingredient_edit.html', {'form': form, 'ingredient': ingredient})
 
 @login_required
 def ingredient_publish(request, pk):
