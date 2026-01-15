@@ -163,7 +163,7 @@ def meal_edit(request, pk):
             return redirect('meal_detail', pk=meal.pk)
     else:
         form = MealForm(instance=meal)
-    return render(request, 'tracker/meal_edit.html', {'form': form})
+    return render(request, 'tracker/meal_edit.html', {'form': form, 'meal': meal})
 
 @login_required
 def meal_publish(request, pk):
