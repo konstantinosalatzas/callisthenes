@@ -36,7 +36,7 @@ def training_new(request):
             return redirect('training_detail', pk=training.pk)
     else:
         form = TrainingForm()
-    return render(request, 'tracker/training_edit.html', {'form': form})
+    return render(request, 'tracker/training_new.html', {'form': form})
 
 @login_required
 def training_edit(request, pk):
