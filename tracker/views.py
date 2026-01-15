@@ -51,7 +51,7 @@ def training_edit(request, pk):
             return redirect('training_detail', pk=training.pk)
     else:
         form = TrainingForm(instance=training)
-    return render(request, 'tracker/training_edit.html', {'form': form})
+    return render(request, 'tracker/training_edit.html', {'form': form, 'training': training})
 
 @login_required
 def training_publish(request, pk):
