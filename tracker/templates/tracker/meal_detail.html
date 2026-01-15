@@ -5,7 +5,7 @@
         <aside class="actions">
             {% if user.is_authenticated %}
                 <a href="{% url 'ingredient_new' pk=meal.pk %}" class="btn btn-secondary">
-                    {% include './icons/file-earmark-plus.svg' %}
+                    {% include './icons/plus-circle-fill.svg' %}
                 </a>
                 <a class="btn btn-secondary" href="{% url 'meal_edit' pk=meal.pk %}">
                     {% include './icons/pencil-fill.svg' %}
