@@ -18,6 +18,7 @@
             </a>
             {{ ingredient.name }}
         </h2>
+        <br>
         <p><i>in <a href="{% url 'meal_detail' pk=ingredient.meal.pk %}">{{ ingredient.meal.title }} @ {{ ingredient.meal.meal_date }}</a></i><p>
         <p>Quantity: {{ ingredient.quantity|linebreaksbr }} {{ ingredient.unit|linebreaksbr }}</p>
         <p>Protein: {{ ingredient.quantity|linebreaksbr }} g</p>
