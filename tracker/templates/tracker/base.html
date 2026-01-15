@@ -17,7 +17,7 @@
                     <a href="{% url 'training_new' %}" class="top-menu">
                         {% include './icons/file-earmark-plus.svg' %} Training
                     </a>
-                    <p id="logout" class="top-menu"> {{ user.username }} <small><form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit">Log out</button></form></small></p>
+                    <p id="logout" class="top-menu"> <i>{{ user.username }}</i> <small><form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit">Log out</button></form></small></p>
                     {% else %}
                     <a href="{% url 'login' %}" class="top-menu">{% include './icons/lock-fill.svg' %}</a>
                     {% endif %}
