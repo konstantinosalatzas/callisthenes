@@ -44,6 +44,9 @@ class Meal(models.Model):
         self.save()
 
     def calculate_protein(self) -> float:
+        """
+        Calculate meal protein from ingredients protein.
+        """
         ingredients = Ingredient.objects.filter(meal=self.pk)
         sum = 0.0
         for ingredient in ingredients:
@@ -51,6 +54,9 @@ class Meal(models.Model):
         return sum
 
     def calculate_carbs(self) -> float:
+        """
+        Calculate meal carbs from ingredients carbs.
+        """
         ingredients = Ingredient.objects.filter(meal=self.pk)
         sum = 0.0
         for ingredient in ingredients:
@@ -58,6 +64,9 @@ class Meal(models.Model):
         return sum
 
     def calculate_fats(self) -> float:
+        """
+        Calculate meal fats from ingredients fats.
+        """
         ingredients = Ingredient.objects.filter(meal=self.pk)
         sum = 0.0
         for ingredient in ingredients:
@@ -65,6 +74,9 @@ class Meal(models.Model):
         return sum
 
     def calculate_kcal(self) -> float:
+        """
+        Calculate meal calories from ingredients calories.
+        """
         ingredients = Ingredient.objects.filter(meal=self.pk)
         sum = 0.0
         for ingredient in ingredients:
