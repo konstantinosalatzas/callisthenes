@@ -195,6 +195,7 @@ def ingredient_new(request, pk):
         if form.is_valid():
             ingredient = form.save(commit=False)
             ingredient.meal = get_object_or_404(Meal, pk=pk)
+            ingredient.kcal = ingredient.calculate_calories()
             ingredient.save()
             return redirect('ingredient_detail', pk=ingredient.pk)
     else:
