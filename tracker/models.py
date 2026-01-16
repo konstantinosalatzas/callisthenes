@@ -51,6 +51,9 @@ class Ingredient(models.Model):
     carbs = models.FloatField(default=0.0)
     fats = models.FloatField(default=0.0)
 
+    def calculate_calories(self):
+        return (self.protein * 4.0 + self.carbs * 4.0 + self.fats * 9.0)
+
     def __str__(self):
         return "{}, {} @ {} - {}".format(self.meal.user, self.meal.title, self.meal.meal_date,
                                          self.name)
