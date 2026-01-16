@@ -15,6 +15,7 @@
             </time>
             <h2><a href="{% url 'meal_detail' pk=meal.pk %}">{{ meal.title }}</a></h2>
             <p><i>at {{ meal.meal_date|linebreaksbr }}</i></p>
+            <p><i>Protein: {{ meal.protein|linebreaksbr }} g, Carbohydrates: {{ meal.carbs|linebreaksbr }} g, Fats: {{ meal.fats|linebreaksbr }} g, Calories: {{ meal.kcal|linebreaksbr }} kcal</i></p>
         </article>
     {% endfor %}
 {% endblock %}
