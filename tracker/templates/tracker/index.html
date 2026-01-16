@@ -9,5 +9,18 @@
        <li><h2><a href="{% url 'meal_list' %}">My meals</a></h2></li>
     </ul>
 </article>
+{% else %}
+<style>
+footer {
+    bottom: 0;
+    text-align: left;
+    position: fixed;
+    padding: 3px;
+    color: black;
+}
+</style>
+<footer>
+    <p>by <a href="https://konstantinosalatzas.github.io">Konstantinos Alatzas</a></p>
+</footer>
 {% endif %}
 {% endblock %}
