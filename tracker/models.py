@@ -64,6 +64,13 @@ class Meal(models.Model):
             sum += ingredient.fats
         return sum
 
+    def calculate_kcal(self) -> float:
+        ingredients = Ingredient.objects.filter(meal=self.pk)
+        sum = 0.0
+        for ingredient in ingredients:
+            sum += ingredient.kcal
+        return sum
+
     def __str__(self):
         return "{}, {} @ {}".format(self.user, self.title, self.meal_date)
 
