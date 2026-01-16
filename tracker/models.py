@@ -43,6 +43,13 @@ class Meal(models.Model):
         self.published_date = timezone.now()
         self.save()
 
+    def calculate_protein(self) -> float:
+        ingredients = Ingredient.objects.filter(meal=self.pk)
+        sum = 0.0
+        for ingredient in ingredients:
+            sum += ingredient.protein
+        return sum
+
     def __str__(self):
         return "{}, {} @ {}".format(self.user, self.title, self.meal_date)
 
