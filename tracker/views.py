@@ -197,6 +197,11 @@ def ingredient_new(request, pk):
             ingredient.meal = get_object_or_404(Meal, pk=pk)
             ingredient.kcal = ingredient.calculate_calories()
             ingredient.save()
+            meal.protein = meal.calculate_protein()
+            meal.carbs = meal.calculate_carbs()
+            meal.fats = meal.calculate_fats()
+            meal.kcal = meal.calculate_kcal()
+            meal.save()
             return redirect('ingredient_detail', pk=ingredient.pk)
     else:
         form = IngredientForm()
