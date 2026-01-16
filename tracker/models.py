@@ -34,9 +34,9 @@ class Meal(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     meal_date = models.DateField(blank=True, null=True) # number?
-    protein = models.FloatField(default=0.0) # measured in grams
-    carbs = models.FloatField(default=0.0) # measured in grams
-    fats = models.FloatField(default=0.0) # measured in grams
+    protein = models.FloatField(default=0.0) # in grams
+    carbs = models.FloatField(default=0.0) # in grams
+    fats = models.FloatField(default=0.0) # in grams
     kcal = models.FloatField(default=0.0)
 
     def publish(self):
@@ -51,9 +51,9 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=200)
     quantity = models.FloatField(default=0.0)
     unit = models.CharField(max_length=200) # unit of measurement
-    protein = models.FloatField(default=0.0) # measured in grams
-    carbs = models.FloatField(default=0.0) # measured in grams
-    fats = models.FloatField(default=0.0) # measured in grams
+    protein = models.FloatField(default=0.0) # in grams
+    carbs = models.FloatField(default=0.0) # in grams
+    fats = models.FloatField(default=0.0) # in grams
     kcal = models.FloatField(default=0.0)
 
     def calculate_calories(self) -> float:
