@@ -210,6 +210,7 @@ def ingredient_edit(request, pk):
         form = IngredientForm(request.POST, instance=ingredient)
         if form.is_valid():
             ingredient = form.save(commit=False)
+            ingredient.kcal = ingredient.calculate_calories()
             ingredient.save()
             return redirect('ingredient_detail', pk=ingredient.pk)
     else:
