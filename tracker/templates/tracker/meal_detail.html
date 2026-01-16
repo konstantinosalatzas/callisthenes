@@ -33,6 +33,8 @@
         </h2>
         <br>
 
+        <p>Protein: {{ meal.protein|linebreaksbr }} g, Carbohydrates: {{ meal.carbs|linebreaksbr }} g, Fats: {{ meal.fats|linebreaksbr }} g, Calories: {{ meal.kcal|linebreaksbr }} kcal</p>
+
         {% block subcontent %}
             {% for ingredient in ingredients %}
                 <article class="post">
