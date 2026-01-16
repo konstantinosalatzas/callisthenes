@@ -82,7 +82,7 @@ class Ingredient(models.Model):
     protein = models.FloatField(default=0.0) # in grams
     carbs = models.FloatField(default=0.0) # in grams
     fats = models.FloatField(default=0.0) # in grams
-    kcal = models.FloatField(default=0.0) # calculated from macronutrients
+    kcal = models.FloatField(default=0.0) # calculated from ingredient's macronutrients
 
     def calculate_calories(self) -> float:
         """
