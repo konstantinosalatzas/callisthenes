@@ -239,8 +239,13 @@ def ingredient_publish(request, pk):
 @login_required
 def ingredient_remove(request, pk):
     ingredient = get_object_or_404(Ingredient, pk=pk)
-    get_object_or_404(Meal, pk=ingredient.meal.pk, user=request.user)
+    meal = get_object_or_404(Meal, pk=ingredient.meal.pk, user=request.user)
     meal_pk = ingredient.meal.pk
     #if request.method=='POST':
     ingredient.delete()
+    meal.protein = meal.calculate_protein()
+    meal.carbs = meal.calculate_carbs()
+    meal.fats = meal.calculate_fats()
+    meal.kcal = meal.calculate_kcal()
+    meal.save()
     return redirect('meal_detail', pk=meal_pk)
