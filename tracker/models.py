@@ -34,9 +34,9 @@ class Meal(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     meal_date = models.DateField(blank=True, null=True) # number?
-    protein = models.FloatField(default=0.0) # in grams
-    carbs = models.FloatField(default=0.0) # in grams
-    fats = models.FloatField(default=0.0) # in grams
+    protein = models.FloatField(default=0.0)
+    carbs = models.FloatField(default=0.0)
+    fats = models.FloatField(default=0.0)
     kcal = models.FloatField(default=0.0)
 
     def publish(self):
