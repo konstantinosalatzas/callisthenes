@@ -43,6 +43,16 @@ class Meal(models.Model):
         self.published_date = timezone.now()
         self.save()
 
+    def calculate(self, field: str) -> float:
+        """
+        Calculate meal protein/carbs/fats/calories from ingredients.
+        """
+        ingredients = Ingredient.objects.filter(meal=self.pk)
+        sum = 0.0
+        for ingredient in ingredients:
+            sum += ingredient[field]
+        return sum
+
     def calculate_protein(self) -> float:
         """
         Calculate meal protein from ingredients protein.
