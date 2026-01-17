@@ -26,9 +26,10 @@ class MealForm(forms.ModelForm):
 
     class Meta:
         model = Meal
-        fields = ('title', 'meal_date')
+        fields = ('title', 'meal_date', 'meal_number')
         widgets = {
             'meal_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'set_number': forms.NumberInput(attrs={'type': 'number', 'min': '1', 'class': 'form-control'}),
         }
 
 class IngredientForm(forms.ModelForm):
