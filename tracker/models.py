@@ -14,6 +14,12 @@ class Training(models.Model):
         self.published_date = timezone.now()
         self.save()
 
+    def calculate_sets(self) -> int:
+        """
+        Calculate total number of sets.
+        """
+        return Set.objects.filter(training=self.pk).count()
+
     def __str__(self):
         return "{}, {} @ {}".format(self.user, self.title, self.training_date)
 
