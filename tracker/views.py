@@ -197,10 +197,10 @@ def ingredient_new(request, pk):
             ingredient.meal = get_object_or_404(Meal, pk=pk)
             ingredient.kcal = ingredient.calculate_calories()
             ingredient.save()
-            meal.protein = meal.calculate_protein()
-            meal.carbs = meal.calculate_carbs()
-            meal.fats = meal.calculate_fats()
-            meal.kcal = meal.calculate_kcal()
+            meal.protein = meal.calculate('protein')
+            meal.carbs = meal.calculate('carbs')
+            meal.fats = meal.calculate('fats')
+            meal.kcal = meal.calculate('kcal')
             meal.save()
             return redirect('ingredient_detail', pk=ingredient.pk)
     else:
@@ -218,10 +218,10 @@ def ingredient_edit(request, pk):
             ingredient.kcal = ingredient.calculate_calories()
             ingredient.save()
             meal = ingredient.meal
-            meal.protein = meal.calculate_protein()
-            meal.carbs = meal.calculate_carbs()
-            meal.fats = meal.calculate_fats()
-            meal.kcal = meal.calculate_kcal()
+            meal.protein = meal.calculate('protein')
+            meal.carbs = meal.calculate('carbs')
+            meal.fats = meal.calculate('fats')
+            meal.kcal = meal.calculate('kcal')
             meal.save()
             return redirect('ingredient_detail', pk=ingredient.pk)
     else:
@@ -243,9 +243,9 @@ def ingredient_remove(request, pk):
     meal_pk = ingredient.meal.pk
     #if request.method=='POST':
     ingredient.delete()
-    meal.protein = meal.calculate_protein()
-    meal.carbs = meal.calculate_carbs()
-    meal.fats = meal.calculate_fats()
-    meal.kcal = meal.calculate_kcal()
+    meal.protein = meal.calculate('protein')
+    meal.carbs = meal.calculate('carbs')
+    meal.fats = meal.calculate('fats')
+    meal.kcal = meal.calculate('kcal')
     meal.save()
     return redirect('meal_detail', pk=meal_pk)
