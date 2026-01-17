@@ -130,7 +130,7 @@ def set_remove(request, pk):
 def meal_list(request):
     meals = []
     if request.user.is_authenticated:
-        meals = Meal.objects.filter(user=request.user, published_date__lte=timezone.now()).order_by('-meal_date')
+        meals = Meal.objects.filter(user=request.user, published_date__lte=timezone.now()).order_by('-meal_date', 'meal_number')
     return render(request, 'tracker/meal_list.html', {'meals': meals})
 
 @login_required
