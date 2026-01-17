@@ -40,7 +40,8 @@ class Meal(models.Model):
     title = models.CharField(max_length=200)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-    meal_date = models.DateField(blank=True, null=True) # TODO: number of meal of the day
+    meal_date = models.DateField(blank=True, null=True)
+    meal_number = models.IntegerField(default=1) # n-th meal of the day
     protein = models.FloatField(default=0.0) # calculated from ingredients protein
     carbs = models.FloatField(default=0.0) # calculated from ingredients carbs
     fats = models.FloatField(default=0.0) # calculated from ingredients fats
