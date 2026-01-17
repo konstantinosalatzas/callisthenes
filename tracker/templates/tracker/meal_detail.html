@@ -33,6 +33,7 @@
         </h2>
         <br>
 
+        <p>Meal #{{ meal.meal_number|linebreaksbr }} of the day</p>
         <p>Protein: {{ meal.protein|linebreaksbr }} g, Carbohydrates: {{ meal.carbs|linebreaksbr }} g, Fats: {{ meal.fats|linebreaksbr }} g, Calories: {{ meal.kcal|linebreaksbr }} kcal</p>
 
         {% block subcontent %}
