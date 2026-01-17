@@ -84,6 +84,8 @@ def set_new(request, pk):
             set = form.save(commit=False)
             set.training = get_object_or_404(Training, pk=pk)
             set.save()
+            training.sets = training.calculate_sets()
+            training.save()
             return redirect('set_detail', pk=set.pk)
     else:
         form = SetForm()
@@ -114,10 +116,12 @@ def set_publish(request, pk):
 @login_required
 def set_remove(request, pk):
     set = get_object_or_404(Set, pk=pk)
-    get_object_or_404(Training, pk=set.training.pk, user=request.user)
+    training = get_object_or_404(Training, pk=set.training.pk, user=request.user)
     training_pk = set.training.pk
     #if request.method=='POST':
     set.delete()
+    training.sets = training.calculate_sets()
+    training.save()
     return redirect('training_detail', pk=training_pk)
 
 # Meal model
