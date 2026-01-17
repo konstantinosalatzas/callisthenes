@@ -50,7 +50,7 @@ class Meal(models.Model):
         ingredients = Ingredient.objects.filter(meal=self.pk)
         sum = 0.0
         for ingredient in ingredients:
-            sum += ingredient[field]
+            sum += ingredient.__getattribute__(field)
         return sum
 
     def __str__(self):
