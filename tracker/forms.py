@@ -3,7 +3,6 @@ from django import forms
 from .models import Training, Set, Meal, Ingredient
 
 class TrainingForm(forms.ModelForm):
-
     class Meta:
         model = Training
         fields = ('title', 'training_date')
@@ -12,7 +11,6 @@ class TrainingForm(forms.ModelForm):
         }
 
 class SetForm(forms.ModelForm):
-
     class Meta:
         model = Set
         fields = ('name', 'set_number', 'reps', 'resistance_weight', 'comment')
@@ -23,7 +21,6 @@ class SetForm(forms.ModelForm):
         }
 
 class MealForm(forms.ModelForm):
-
     class Meta:
         model = Meal
         fields = ('title', 'meal_date', 'meal_number')
@@ -33,7 +30,6 @@ class MealForm(forms.ModelForm):
         }
 
 class IngredientForm(forms.ModelForm):
-
     class Meta:
         model = Ingredient
         fields = ('name', 'quantity', 'unit', 'protein', 'carbs', 'fats')
