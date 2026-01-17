@@ -15,6 +15,7 @@
             </time>
             <h2><a href="{% url 'training_detail' pk=training.pk %}">{{ training.title }}</a></h2>
             <p><i>at {{ training.training_date|linebreaksbr }}</i></p>
+            <p><i>Sets: {{ training.sets|linebreaksbr }} </i></p>
         </article>
     {% endfor %}
 {% endblock %}
