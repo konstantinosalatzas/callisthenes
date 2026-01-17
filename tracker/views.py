@@ -197,10 +197,8 @@ def ingredient_new(request, pk):
             ingredient.meal = get_object_or_404(Meal, pk=pk)
             ingredient.kcal = ingredient.calculate_calories()
             ingredient.save()
-            meal.protein = meal.calculate('protein')
-            meal.carbs = meal.calculate('carbs')
-            meal.fats = meal.calculate('fats')
-            meal.kcal = meal.calculate('kcal')
+            for field in ['protein', 'carbs', 'fats', 'kcal']:
+                meal.field = meal.calculate(field)
             meal.save()
             return redirect('ingredient_detail', pk=ingredient.pk)
     else:
@@ -218,10 +216,8 @@ def ingredient_edit(request, pk):
             ingredient.kcal = ingredient.calculate_calories()
             ingredient.save()
             meal = ingredient.meal
-            meal.protein = meal.calculate('protein')
-            meal.carbs = meal.calculate('carbs')
-            meal.fats = meal.calculate('fats')
-            meal.kcal = meal.calculate('kcal')
+            for field in ['protein', 'carbs', 'fats', 'kcal']:
+                meal['field'] = meal.calculate(field)
             meal.save()
             return redirect('ingredient_detail', pk=ingredient.pk)
     else:
@@ -243,9 +239,7 @@ def ingredient_remove(request, pk):
     meal_pk = ingredient.meal.pk
     #if request.method=='POST':
     ingredient.delete()
-    meal.protein = meal.calculate('protein')
-    meal.carbs = meal.calculate('carbs')
-    meal.fats = meal.calculate('fats')
-    meal.kcal = meal.calculate('kcal')
+    for field in ['protein', 'carbs', 'fats', 'kcal']:
+        meal['field'] = meal.calculate(field)
     meal.save()
     return redirect('meal_detail', pk=meal_pk)
