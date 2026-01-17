@@ -12,16 +12,16 @@ Now its tech stack is:
 
 * HTML/CSS front-end
 
-### Training tracking
+### Trainings
 
-The users can track their:
+The user can track his:
 
 1. trainings done at specified dates and
 2. for each training the performed sets of exercises/skills/combos (with reps, resistance and more)
 
-### Meal tracking
+### Meals
 
-The users can track their:
+The user can track his:
 
-1. meals at specified dates and
-2. for each meal its ingredients (with quantity, macronutrients and more)
+1. meals had at specified dates and
+2. for each meal its ingredients (with quantities, macronutrients and more)
