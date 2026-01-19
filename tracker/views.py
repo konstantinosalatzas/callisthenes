@@ -270,6 +270,7 @@ def unit_new(request):
             unit = form.save(commit=False)
             unit.user = request.user
             unit.published_date = timezone.now()
+            unit.kcal = unit.calculate_calories()
             unit.save()
             return redirect('unit_detail', pk=unit.pk)
     else:
@@ -285,6 +286,7 @@ def unit_edit(request, pk):
             unit = form.save(commit=False)
             unit.user = request.user
             unit.published_date = timezone.now()
+            unit.kcal = unit.calculate_calories()
             unit.save()
             return redirect('unit_detail', pk=unit.pk)
     else:
