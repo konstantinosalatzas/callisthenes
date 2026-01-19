@@ -14,14 +14,14 @@ Now its tech stack is:
 
 ### Trainings
 
-The user can track his:
+The user can track:
 
 1. trainings done at specified dates and
 2. for each training the performed sets of exercises/skills/combos (with reps, resistance and more)
 
 ### Meals
 
-The user can track his:
+The user can track:
 
 1. meals had at specified dates and
 2. for each meal its ingredients (with quantities, macronutrients and more)
