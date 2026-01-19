@@ -290,3 +290,10 @@ def unit_edit(request, pk):
     else:
         form = UnitForm(instance=unit)
     return render(request, 'tracker/unit_edit.html', {'form': form, 'unit': unit})
+
+@login_required
+def unit_publish(request, pk):
+    unit = get_object_or_404(Unit, pk=pk, user=request.user)
+    if request.method=='POST':
+        unit.publish()
+    return redirect('unit_detail', pk=pk)
