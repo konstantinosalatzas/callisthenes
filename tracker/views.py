@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
-from .models import Training, Set, Meal, Ingredient
+from .models import Training, Set, Meal, Ingredient, Unit
 from .forms import TrainingForm, SetForm, MealForm, IngredientForm
 
 def index(request):
@@ -247,3 +247,12 @@ def ingredient_remove(request, pk):
         meal.__setattr__(field, meal.calculate(field))
     meal.save()
     return redirect('meal_detail', pk=meal_pk)
+
+# Unit model
+
+@login_required
+def unit_list(request):
+    units = []
+    if request.user.is_authenticated:
+        units = Unit.objects.filter(user=request.user, published_date__lte=timezone.now()).order_by('name')
+    return render(request, 'tracker/unit_list.html', {'units': units})
