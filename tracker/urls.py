@@ -26,4 +26,10 @@ urlpatterns = [
     path('ingredient/<int:pk>/edit/', views.ingredient_edit, name='ingredient_edit'),
     path('ingredient/<int:pk>/publish/', views.ingredient_publish, name='ingredient_publish'),
     path('ingredient/<int:pk>/remove/', views.ingredient_remove, name='ingredient_remove'),
+    path('unit', views.unit_list, name='unit_list'),
+    path('unit/<int:pk>/', views.unit_detail, name='unit_detail'),
+    path('unit/new/', views.unit_new, name='unit_new'),
+    path('unit/<int:pk>/edit/', views.unit_edit, name='unit_edit'),
+    path('unit/<int:pk>/publish/', views.unit_publish, name='unit_publish'),
+    path('unit/<int:pk>/remove/', views.unit_remove, name='unit_remove'),
 ]
