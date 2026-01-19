@@ -43,7 +43,7 @@ class IngredientForm(forms.ModelForm):
 class UnitForm(forms.ModelForm):
     class Meta:
         model = Unit
-        fields = ('name', 'unit', 'protein', 'carbs', 'fats')
+        fields = ('name', 'unit_of_measurement', 'protein', 'carbs', 'fats')
         widgets = {
             'protein': forms.NumberInput(attrs={'type': 'number', 'min': '0', 'step': '0.1', 'class': 'form-control'}),
             'carbs': forms.NumberInput(attrs={'type': 'number', 'min': '0', 'step': '0.1', 'class': 'form-control'}),
