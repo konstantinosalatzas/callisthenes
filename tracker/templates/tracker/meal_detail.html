@@ -35,8 +35,6 @@
 
         <p>Meal #{{ meal.meal_number|linebreaksbr }} of the day</p>
         <p>Protein: {{ meal.protein|linebreaksbr }} g, Carbohydrates: {{ meal.carbs|linebreaksbr }} g, Fats: {{ meal.fats|linebreaksbr }} g, Calories: {{ meal.kcal|linebreaksbr }} kcal</p>
-        <h3>Ingredients:</h3>
-        <br>
 
         {% block subcontent %}
             {% for ingredient in ingredients %}
