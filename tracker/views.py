@@ -275,3 +275,18 @@ def unit_new(request):
     else:
         form = UnitForm()
     return render(request, 'tracker/unit_new.html', {'form': form})
+
+@login_required
+def unit_edit(request, pk):
+    unit = get_object_or_404(Unit, pk=pk, user=request.user)
+    if request.method == "POST":
+        form = UnitForm(request.POST, instance=unit)
+        if form.is_valid():
+            unit = form.save(commit=False)
+            unit.user = request.user
+            unit.published_date = timezone.now()
+            unit.save()
+            return redirect('unit_detail', pk=unit.pk)
+    else:
+        form = UnitForm(instance=unit)
+    return render(request, 'tracker/unit_edit.html', {'form': form, 'unit': unit})
