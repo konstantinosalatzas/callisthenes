@@ -30,7 +30,11 @@
         </h2>
         <br>
 
-        <p>Protein: {{ unit.protein|linebreaksbr }} g, Carbohydrates: {{ unit.carbs|linebreaksbr }} g, Fats: {{ unit.fats|linebreaksbr }} g, Calories: {{ unit.kcal|linebreaksbr }} kcal</p>
+        <p>Unit of measurement: 1 {{ unit.unit|linebreaksbr }}</p>
+        <p>Protein: {{ unit.protein|linebreaksbr }} g</p>
+        <p>Carbohydrates: {{ unit.carbs|linebreaksbr }} g</p>
+        <p>Fats: {{ unit.fats|linebreaksbr }} g</p>
+        <p>Calories: {{ unit.kcal|linebreaksbr }} kcal</p>
 
     </article>
 {% endblock %}
