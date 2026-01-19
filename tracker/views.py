@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
 from .models import Training, Set, Meal, Ingredient, Unit
-from .forms import TrainingForm, SetForm, MealForm, IngredientForm
+from .forms import TrainingForm, SetForm, MealForm, IngredientForm, UnitForm
 
 def index(request):
     return render(request, 'tracker/index.html')
@@ -261,3 +261,17 @@ def unit_list(request):
 def unit_detail(request, pk):
     unit = get_object_or_404(Unit, pk=pk, user=request.user)
     return render(request, 'tracker/unit_detail.html', {'unit': unit})
+
+@login_required
+def unit_new(request):
+    if request.method == "POST":
+        form = UnitForm(request.POST)
+        if form.is_valid():
+            unit = form.save(commit=False)
+            unit.user = request.user
+            unit.published_date = timezone.now()
+            unit.save()
+            return redirect('unit_detail', pk=unit.pk)
+    else:
+        form = UnitForm()
+    return render(request, 'tracker/unit_new.html', {'form': form})
