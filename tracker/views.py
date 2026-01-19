@@ -256,3 +256,8 @@ def unit_list(request):
     if request.user.is_authenticated:
         units = Unit.objects.filter(user=request.user, published_date__lte=timezone.now()).order_by('name')
     return render(request, 'tracker/unit_list.html', {'units': units})
+
+@login_required
+def unit_detail(request, pk):
+    unit = get_object_or_404(Unit, pk=pk, user=request.user)
+    return render(request, 'tracker/unit_detail.html', {'unit': unit})
