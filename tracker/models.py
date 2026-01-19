@@ -90,7 +90,7 @@ class Unit(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     unit_of_measurement = models.CharField(max_length=200)
-    units = models.FloatField(default=0.0)
+    units = models.FloatField(default=0.0) # number of units
     protein = models.FloatField(default=0.0) # per number of units
     carbs = models.FloatField(default=0.0) # per number of units
     fats = models.FloatField(default=0.0) # per number of units
