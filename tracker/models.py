@@ -89,15 +89,16 @@ class Unit(models.Model):
     name = models.CharField(max_length=200)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-    unit = models.CharField(max_length=200) # unit of measurement
-    protein = models.FloatField(default=0.0) # per unit
-    carbs = models.FloatField(default=0.0) # per unit
-    fats = models.FloatField(default=0.0) # per unit
-    kcal = models.FloatField(default=0.0) # calculated from ingredient per unit
+    unit_of_measurement = models.CharField(max_length=200)
+    units = models.FloatField(default=0.0)
+    protein = models.FloatField(default=0.0) # per number of units
+    carbs = models.FloatField(default=0.0) # per number of units
+    fats = models.FloatField(default=0.0) # per number of units
+    kcal = models.FloatField(default=0.0) # calculated from ingredient per number of units
 
     def calculate_calories(self) -> float:
         """
-        Calculate ingredient calories (kcal) from macronutrient quantities per unit.
+        Calculate ingredient calories (kcal) from macronutrient quantities per number of units.
         """
         return (self.protein * 4.0 + self.carbs * 4.0 + self.fats * 9.0)
 
