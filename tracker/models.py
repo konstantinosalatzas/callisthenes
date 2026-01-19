@@ -83,3 +83,21 @@ class Ingredient(models.Model):
     def __str__(self):
         return "{}, {} @ {} - {}".format(self.meal.user, self.meal.title, self.meal.meal_date,
                                          self.name)
+
+class Unit(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    unit = models.CharField(max_length=200) # unit of measurement
+    protein = models.FloatField(default=0.0) # per unit
+    carbs = models.FloatField(default=0.0) # per unit
+    fats = models.FloatField(default=0.0) # per unit
+    kcal = models.FloatField(default=0.0) # calculated from ingredient per unit
+
+    def calculate_calories(self) -> float:
+        """
+        Calculate ingredient calories (kcal) from macronutrient quantities per unit.
+        """
+        return (self.protein * 4.0 + self.carbs * 4.0 + self.fats * 9.0)
+
+    def __str__(self):
+        return "{} - {}".format(self.user, self.name)
