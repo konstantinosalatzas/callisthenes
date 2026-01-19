@@ -64,26 +64,6 @@ class Meal(models.Model):
     def __str__(self):
         return "{}, {} @ {}".format(self.user, self.title, self.meal_date)
 
-class Ingredient(models.Model):
-    meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200)
-    quantity = models.FloatField(default=0.0)
-    unit = models.CharField(max_length=200) # unit of measurement
-    protein = models.FloatField(default=0.0) # in grams
-    carbs = models.FloatField(default=0.0) # in grams
-    fats = models.FloatField(default=0.0) # in grams
-    kcal = models.FloatField(default=0.0) # calculated from ingredient macronutrients
-
-    def calculate_calories(self) -> float:
-        """
-        Calculate ingredient calories (kcal) from macronutrient quantities measured in grams.
-        """
-        return (self.protein * 4.0 + self.carbs * 4.0 + self.fats * 9.0)
-
-    def __str__(self):
-        return "{}, {} @ {} - {}".format(self.meal.user, self.meal.title, self.meal.meal_date,
-                                         self.name)
-
 class Unit(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
@@ -104,3 +84,23 @@ class Unit(models.Model):
 
     def __str__(self):
         return "{} - {}".format(self.user, self.name)
+
+class Ingredient(models.Model):
+    meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    quantity = models.FloatField(default=0.0)
+    unit = models.CharField(max_length=200) # unit of measurement
+    protein = models.FloatField(default=0.0) # in grams
+    carbs = models.FloatField(default=0.0) # in grams
+    fats = models.FloatField(default=0.0) # in grams
+    kcal = models.FloatField(default=0.0) # calculated from ingredient macronutrients
+
+    def calculate_calories(self) -> float:
+        """
+        Calculate ingredient calories (kcal) from macronutrient quantities measured in grams.
+        """
+        return (self.protein * 4.0 + self.carbs * 4.0 + self.fats * 9.0)
+
+    def __str__(self):
+        return "{}, {} @ {} - {}".format(self.meal.user, self.meal.title, self.meal.meal_date,
+                                         self.name)
