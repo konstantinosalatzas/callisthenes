@@ -297,3 +297,10 @@ def unit_publish(request, pk):
     if request.method=='POST':
         unit.publish()
     return redirect('unit_detail', pk=pk)
+
+@login_required
+def unit_remove(request, pk):
+    unit = get_object_or_404(Unit, pk=pk, user=request.user)
+    #if request.method=='POST':
+    unit.delete()
+    return redirect('unit_list')
