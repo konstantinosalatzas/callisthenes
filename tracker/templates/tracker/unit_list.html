@@ -14,7 +14,7 @@
                 {{ unit.published_date }}
             </time>
             <h2><a href="{% url 'unit_detail' pk=unit.pk %}">{{ unit.name }}</a></h2>
-            <p><i>Unit of measurement: {{ unit.unit|linebreaksbr }}</i></p>
+            <p><i>Unit of measurement: 1 {{ unit.unit|linebreaksbr }}</i></p>
         </article>
     {% endfor %}
 {% endblock %}
