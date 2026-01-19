@@ -87,6 +87,8 @@ class Ingredient(models.Model):
 class Unit(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
     unit = models.CharField(max_length=200) # unit of measurement
     protein = models.FloatField(default=0.0) # per unit
     carbs = models.FloatField(default=0.0) # per unit
