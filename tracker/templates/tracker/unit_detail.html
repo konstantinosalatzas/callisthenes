@@ -1,0 +1,36 @@
+{% extends 'tracker/base.html' %}
+
+{% block content %}
+    <article class="post">
+        <aside class="actions">
+            {% if user.is_authenticated %}
+                <a class="btn btn-secondary" href="{% url 'unit_edit' pk=unit.pk %}">
+                    {% include './icons/pencil-fill.svg' %}
+                </a>
+                <a class="btn btn-secondary" href="{% url 'unit_remove' pk=unit.pk %}" onclick="return confirm('Remove this ingredient?');">
+                    {% include './icons/trash-fill.svg' %}
+                </a>
+            {% endif %}
+        </aside>
+        {% if unit.published_date %}
+            <div class="date">
+                {{ unit.published_date }}
+            </div>
+
+            {% else %}
+            <aside class="actions">
+                <a class="btn btn-secondary" role="button" href="{% url 'unit_publish' pk=unit.pk %}">Publish</a>
+            </aside>
+        {% endif %}
+        <h2>
+            <a class="btn btn-secondary" href="{% url 'unit_list' %}">
+                {% include './icons/arrow-left.svg' %}
+            </a>
+            {{ unit.name }}
+        </h2>
+        <br>
+
+        <p>Protein: {{ unit.protein|linebreaksbr }} g, Carbohydrates: {{ unit.carbs|linebreaksbr }} g, Fats: {{ unit.fats|linebreaksbr }} g, Calories: {{ unit.kcal|linebreaksbr }} kcal</p>
+
+    </article>
+{% endblock %}
