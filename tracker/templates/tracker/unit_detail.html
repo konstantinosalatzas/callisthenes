@@ -30,7 +30,7 @@
         </h2>
         <br>
 
-        <p>Unit of measurement: 1 {{ unit.unit|linebreaksbr }}</p>
+        <p>Unit of measurement: {{ unit.units|linebreaksbr }} {{ unit.unit_of_measurement|linebreaksbr }}</p>
         <p>Protein: {{ unit.protein|linebreaksbr }} g</p>
         <p>Carbohydrates: {{ unit.carbs|linebreaksbr }} g</p>
         <p>Fats: {{ unit.fats|linebreaksbr }} g</p>
