@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Training, Set, Meal, Ingredient
+from .models import Training, Set, Meal, Ingredient, Unit
 
 class TrainingForm(forms.ModelForm):
     class Meta:
@@ -35,6 +35,16 @@ class IngredientForm(forms.ModelForm):
         fields = ('name', 'quantity', 'unit', 'protein', 'carbs', 'fats')
         widgets = {
             'quantity': forms.NumberInput(attrs={'type': 'number', 'min': '0', 'step': '0.1', 'class': 'form-control'}),
+            'protein': forms.NumberInput(attrs={'type': 'number', 'min': '0', 'step': '0.1', 'class': 'form-control'}),
+            'carbs': forms.NumberInput(attrs={'type': 'number', 'min': '0', 'step': '0.1', 'class': 'form-control'}),
+            'fats': forms.NumberInput(attrs={'type': 'number', 'min': '0', 'step': '0.1', 'class': 'form-control'}),
+        }
+
+class UnitForm(forms.ModelForm):
+    class Meta:
+        model = Unit
+        fields = ('name', 'unit', 'protein', 'carbs', 'fats')
+        widgets = {
             'protein': forms.NumberInput(attrs={'type': 'number', 'min': '0', 'step': '0.1', 'class': 'form-control'}),
             'carbs': forms.NumberInput(attrs={'type': 'number', 'min': '0', 'step': '0.1', 'class': 'form-control'}),
             'fats': forms.NumberInput(attrs={'type': 'number', 'min': '0', 'step': '0.1', 'class': 'form-control'}),
