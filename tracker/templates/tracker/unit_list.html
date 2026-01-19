@@ -1,0 +1,20 @@
+{% extends 'tracker/base.html' %}
+
+{% block content %}
+    <h2>
+        <a class="btn btn-secondary" href="{% url 'index' %}">
+            {% include './icons/arrow-left.svg' %}
+        </a>
+        My ingredients:
+    </h2>
+    <br>
+    {% for unit in units %}
+        <article class="post">
+            <time class="date">
+                {{ unit.published_date }}
+            </time>
+            <h2><a href="{% url 'unit_detail' pk=unit.pk %}">{{ unit.name }}</a></h2>
+            <p><i>Unit of measurement: {{ unit.unit|linebreaksbr }}</i></p>
+        </article>
+    {% endfor %}
+{% endblock %}
