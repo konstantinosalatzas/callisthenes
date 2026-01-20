@@ -8,7 +8,7 @@ class Training(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     training_date = models.DateField(blank=True, null=True)
-    sets = models.IntegerField(default=0) # count of training sets
+    sets = models.IntegerField(default=0) # total number of training sets
 
     def publish(self):
         self.published_date = timezone.now()
@@ -42,10 +42,10 @@ class Meal(models.Model):
     published_date = models.DateTimeField(blank=True, null=True)
     meal_date = models.DateField(blank=True, null=True)
     meal_number = models.IntegerField(default=1) # number of meal of the day
-    protein = models.FloatField(default=0.0) # sum of ingredients protein
-    carbs = models.FloatField(default=0.0) # sum of ingredients carbs
-    fats = models.FloatField(default=0.0) # sum of ingredients fats
-    kcal = models.FloatField(default=0.0) # sum of ingredients calories
+    protein = models.FloatField(default=0.0) # calculated from ingredients protein
+    carbs = models.FloatField(default=0.0) # calculated from ingredients carbs
+    fats = models.FloatField(default=0.0) # calculated from ingredients fats
+    kcal = models.FloatField(default=0.0) # calculated from ingredients calories
 
     def publish(self):
         self.published_date = timezone.now()
