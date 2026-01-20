@@ -8,7 +8,7 @@ class Training(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     training_date = models.DateField(blank=True, null=True)
-    sets = models.IntegerField(default=0) # calculated from training sets
+    sets = models.IntegerField(default=0) # count of training sets
 
     def publish(self):
         self.published_date = timezone.now()
@@ -16,7 +16,7 @@ class Training(models.Model):
 
     def calculate_sets(self) -> int:
         """
-        Calculate total number of sets.
+        Calculate total number of training sets.
         """
         return Set.objects.filter(training=self.pk).count()
 
@@ -42,10 +42,10 @@ class Meal(models.Model):
     published_date = models.DateTimeField(blank=True, null=True)
     meal_date = models.DateField(blank=True, null=True)
     meal_number = models.IntegerField(default=1) # number of meal of the day
-    protein = models.FloatField(default=0.0) # calculated from ingredients protein
-    carbs = models.FloatField(default=0.0) # calculated from ingredients carbs
-    fats = models.FloatField(default=0.0) # calculated from ingredients fats
-    kcal = models.FloatField(default=0.0) # calculated from ingredients calories
+    protein = models.FloatField(default=0.0) # sum of ingredients protein
+    carbs = models.FloatField(default=0.0) # sum of ingredients carbs
+    fats = models.FloatField(default=0.0) # sum of ingredients fats
+    kcal = models.FloatField(default=0.0) # sum of ingredients calories
 
     def publish(self):
         self.published_date = timezone.now()
@@ -78,7 +78,7 @@ class Unit(models.Model):
 
     def calculate_calories(self) -> float:
         """
-        Calculate ingredient calories (kcal) from macronutrient quantities per number of units.
+        Calculate ingredient calories from macronutrient quantities per number of units.
         """
         return (self.protein * 4.0 + self.carbs * 4.0 + self.fats * 9.0)
 
@@ -90,14 +90,14 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=200)
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
     quantity = models.FloatField(default=0.0)
-    protein = models.FloatField(default=0.0)
-    carbs = models.FloatField(default=0.0)
-    fats = models.FloatField(default=0.0)
-    kcal = models.FloatField(default=0.0) # calculated from macronutrients
+    protein = models.FloatField(default=0.0) # calculated from protein per number of units
+    carbs = models.FloatField(default=0.0) # calculated from carbs per number of units
+    fats = models.FloatField(default=0.0) # calculated from fats per number of units
+    kcal = models.FloatField(default=0.0) # calculated from calories per number of units
 
     def calculate(self, field: str) -> float:
         """
-        Calculate ingredient protein/carbs/fats/calories.
+        Calculate ingredient protein/carbs/fats/calories from macronutrients per number of units.
         """
         unit = self.unit
         return (self.quantity * unit.__getattribute__(field))
