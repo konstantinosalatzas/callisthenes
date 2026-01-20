@@ -95,12 +95,6 @@ class Ingredient(models.Model):
     fats = models.FloatField(default=0.0)
     kcal = models.FloatField(default=0.0) # calculated from macronutrients
 
-    def calculate_calories(self) -> float:
-        """
-        Calculate ingredient calories (kcal) from macronutrient quantities measured in grams.
-        """
-        return (self.protein * 4.0 + self.carbs * 4.0 + self.fats * 9.0)
-
     def calculate(self, field: str) -> float:
         """
         Calculate ingredient protein/carbs/fats/calories.
