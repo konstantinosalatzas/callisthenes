@@ -290,6 +290,15 @@ def unit_edit(request, pk):
             unit.published_date = timezone.now()
             unit.kcal = unit.calculate_calories()
             unit.save()
+            ingredients = Ingredient.objects.filter(unit=pk)
+            for ingredient in ingredients:
+                for field in ['protein', 'carbs', 'fats', 'kcal']:
+                    ingredient.__setattr__(field, ingredient.calculate(field))
+                ingredient.save()
+                meal = ingredient.meal
+                for field in ['protein', 'carbs', 'fats', 'kcal']:
+                    meal.__setattr__(field, meal.calculate(field))
+                meal.save()
             return redirect('unit_detail', pk=unit.pk)
     else:
         form = UnitForm(instance=unit)
