@@ -42,7 +42,7 @@ class UnitForm(forms.ModelForm):
         model = Unit
         fields = ('name', 'unit_of_measurement', 'units', 'protein', 'carbs', 'fats')
         widgets = {
-            'units': forms.NumberInput(attrs={'type': 'number', 'min': '0', 'step': '0.1', 'class': 'form-control'}),
+            'units': forms.NumberInput(attrs={'type': 'number', 'min': '0.1', 'step': '0.1', 'class': 'form-control'}),
             'protein': forms.NumberInput(attrs={'type': 'number', 'min': '0', 'step': '0.1', 'class': 'form-control'}),
             'carbs': forms.NumberInput(attrs={'type': 'number', 'min': '0', 'step': '0.1', 'class': 'form-control'}),
             'fats': forms.NumberInput(attrs={'type': 'number', 'min': '0', 'step': '0.1', 'class': 'form-control'}),
