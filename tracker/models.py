@@ -88,12 +88,12 @@ class Unit(models.Model):
 class Ingredient(models.Model):
     meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
+    unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
     quantity = models.FloatField(default=0.0)
-    unit = models.CharField(max_length=200) # unit of measurement
-    protein = models.FloatField(default=0.0) # in grams
-    carbs = models.FloatField(default=0.0) # in grams
-    fats = models.FloatField(default=0.0) # in grams
-    kcal = models.FloatField(default=0.0) # calculated from ingredient macronutrients
+    protein = models.FloatField(default=0.0)
+    carbs = models.FloatField(default=0.0)
+    fats = models.FloatField(default=0.0)
+    kcal = models.FloatField(default=0.0) # calculated from macronutrients
 
     def calculate_calories(self) -> float:
         """
