@@ -101,6 +101,13 @@ class Ingredient(models.Model):
         """
         return (self.protein * 4.0 + self.carbs * 4.0 + self.fats * 9.0)
 
+    def calculate(self, field: str) -> float:
+        """
+        Calculate ingredient protein/carbs/fats/calories.
+        """
+        unit = self.unit
+        return (self.quantity * unit.__getattribute__(field))
+
     def __str__(self):
         return "{}, {} @ {} - {}".format(self.meal.user, self.meal.title, self.meal.meal_date,
                                          self.name)
