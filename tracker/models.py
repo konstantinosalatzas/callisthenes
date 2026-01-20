@@ -100,7 +100,7 @@ class Ingredient(models.Model):
         Calculate ingredient protein/carbs/fats/calories from macronutrients per number of units.
         """
         unit = self.unit
-        return (self.quantity * unit.__getattribute__(field))
+        return (self.quantity * unit.__getattribute__(field) / unit.units)
 
     def __str__(self):
         return "{}, {} @ {} - {}".format(self.meal.user, self.meal.title, self.meal.meal_date,
