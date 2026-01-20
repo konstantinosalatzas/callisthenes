@@ -53,7 +53,7 @@ class Meal(models.Model):
 
     def calculate(self, field: str) -> float:
         """
-        Calculate meal protein/carbs/fats/calories from ingredients.
+        Calculate meal protein/carbs/fats/calories from ingredients macronutrients.
         """
         ingredients = Ingredient.objects.filter(meal=self.pk)
         sum = 0.0
@@ -78,7 +78,7 @@ class Unit(models.Model):
 
     def calculate_calories(self) -> float:
         """
-        Calculate ingredient calories from macronutrient quantities per number of units.
+        Calculate ingredient calories from macronutrients per number of units.
         """
         return (self.protein * 4.0 + self.carbs * 4.0 + self.fats * 9.0)
 
