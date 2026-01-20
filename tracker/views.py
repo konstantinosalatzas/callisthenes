@@ -315,5 +315,13 @@ def unit_publish(request, pk):
 def unit_remove(request, pk):
     unit = get_object_or_404(Unit, pk=pk, user=request.user)
     #if request.method=='POST':
+    ingredients = Ingredient.objects.filter(unit=pk)
+    meals = []
+    for ingredient in ingredients:
+        meals.append(ingredient.meal)
     unit.delete()
+    for meal in meals:
+        for field in ['protein', 'carbs', 'fats', 'kcal']:
+            meal.__setattr__(field, meal.calculate(field))
+        meal.save()
     return redirect('unit_list')
