@@ -199,7 +199,8 @@ def ingredient_new(request, pk):
         if form.is_valid():
             ingredient = form.save(commit=False)
             ingredient.meal = get_object_or_404(Meal, pk=pk)
-            ingredient.kcal = ingredient.calculate_calories()
+            for field in ['protein', 'carbs', 'fats', 'kcal']:
+                ingredient.__setattr__(field, ingredient.calculate(field))
             ingredient.save()
             for field in ['protein', 'carbs', 'fats', 'kcal']:
                 meal.__setattr__(field, meal.calculate(field))
