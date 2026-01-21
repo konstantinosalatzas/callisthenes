@@ -19,11 +19,6 @@
             <div class="date">
                 {{ meal.published_date }}
             </div>
-
-            {% else %}
-            <aside class="actions">
-                <a class="btn btn-secondary" role="button" href="{% url 'meal_publish' pk=meal.pk %}">Publish</a>
-            </aside>
         {% endif %}
         <h2>
             <a class="btn btn-secondary" href="{% url 'meal_list' %}">
