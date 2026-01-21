@@ -16,11 +16,6 @@
             <div class="date">
                 {{ unit.published_date }}
             </div>
-
-            {% else %}
-            <aside class="actions">
-                <a class="btn btn-secondary" role="button" href="{% url 'unit_publish' pk=unit.pk %}">Publish</a>
-            </aside>
         {% endif %}
         <h2>
             <a class="btn btn-secondary" href="{% url 'unit_list' %}">
