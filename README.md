@@ -30,4 +30,4 @@ The user can create nutritional information profiles of ingredients.
 
 ### Meals
 
-The user can track meals had at specified dates and the ingredients in a meal (with information abount quantity, macronutrients and more).
+The user can track meals had at specified dates and the ingredients in a meal (with information about quantity, macronutrients and more).
