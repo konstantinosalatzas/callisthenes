@@ -316,7 +316,6 @@ def unit_remove(request, pk):
         meals.append(ingredient.meal)
     unit.delete()
     for meal in meals:
-        for field in ['protein', 'carbs', 'fats', 'kcal']:
-            meal.__setattr__(field, meal.calculate(field))
+        meal.update_calculated_fields()
         meal.save()
     return redirect('unit_list')
