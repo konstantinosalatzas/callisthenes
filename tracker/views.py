@@ -289,8 +289,7 @@ def unit_edit(request, pk):
             unit.save()
             ingredients = Ingredient.objects.filter(unit=pk)
             for ingredient in ingredients:
-                for field in ['protein', 'carbs', 'fats', 'kcal']:
-                    ingredient.__setattr__(field, ingredient.calculate(field))
+                ingredient.update_calculated_fields()
                 ingredient.save()
                 meal = ingredient.meal
                 for field in ['protein', 'carbs', 'fats', 'kcal']:
