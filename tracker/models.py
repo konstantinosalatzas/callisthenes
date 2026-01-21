@@ -61,6 +61,13 @@ class Meal(models.Model):
             sum += ingredient.__getattribute__(field)
         return sum
 
+    def update_calculated_fields(self):
+        """
+        Call calculate().
+        """
+        for field in ['protein', 'carbs', 'fats', 'kcal']:
+            self.__setattr__(field, self.calculate(field))
+
     def __str__(self):
         return "{}, {} @ {}".format(self.user, self.title, self.meal_date)
 
