@@ -54,13 +54,6 @@ def training_edit(request, pk):
     return render(request, 'tracker/training_edit.html', {'form': form, 'training': training})
 
 @login_required
-def training_publish(request, pk):
-    training = get_object_or_404(Training, pk=pk, user=request.user)
-    if request.method=='POST':
-        training.publish()
-    return redirect('training_detail', pk=pk)
-
-@login_required
 def training_remove(request, pk):
     training = get_object_or_404(Training, pk=pk, user=request.user)
     #if request.method=='POST':
@@ -104,14 +97,6 @@ def set_edit(request, pk):
     else:
         form = SetForm(instance=set)
     return render(request, 'tracker/set_edit.html', {'form': form, 'set': set})
-
-@login_required
-def set_publish(request, pk):
-    set = get_object_or_404(Set, pk=pk)
-    get_object_or_404(Training, pk=set.training.pk, user=request.user)
-    if request.method=='POST':
-        set.publish()
-    return redirect('set_detail', pk=pk)
 
 @login_required
 def set_remove(request, pk):
@@ -170,13 +155,6 @@ def meal_edit(request, pk):
     return render(request, 'tracker/meal_edit.html', {'form': form, 'meal': meal})
 
 @login_required
-def meal_publish(request, pk):
-    meal = get_object_or_404(Meal, pk=pk, user=request.user)
-    if request.method=='POST':
-        meal.publish()
-    return redirect('meal_detail', pk=pk)
-
-@login_required
 def meal_remove(request, pk):
     meal = get_object_or_404(Meal, pk=pk, user=request.user)
     #if request.method=='POST':
@@ -225,14 +203,6 @@ def ingredient_edit(request, pk):
     else:
         form = IngredientForm(instance=ingredient)
     return render(request, 'tracker/ingredient_edit.html', {'form': form, 'ingredient': ingredient})
-
-@login_required
-def ingredient_publish(request, pk):
-    ingredient = get_object_or_404(Ingredient, pk=pk)
-    get_object_or_404(Meal, pk=ingredient.meal.pk, user=request.user)
-    if request.method=='POST':
-        ingredient.publish()
-    return redirect('ingredient_detail', pk=pk)
 
 @login_required
 def ingredient_remove(request, pk):
@@ -296,13 +266,6 @@ def unit_edit(request, pk):
     else:
         form = UnitForm(instance=unit)
     return render(request, 'tracker/unit_edit.html', {'form': form, 'unit': unit})
-
-@login_required
-def unit_publish(request, pk):
-    unit = get_object_or_404(Unit, pk=pk, user=request.user)
-    if request.method=='POST':
-        unit.publish()
-    return redirect('unit_detail', pk=pk)
 
 @login_required
 def unit_remove(request, pk):
