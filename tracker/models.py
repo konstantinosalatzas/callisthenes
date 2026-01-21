@@ -10,10 +10,6 @@ class Training(models.Model):
     training_date = models.DateField(blank=True, null=True)
     sets = models.IntegerField(default=0) # total number of training sets
 
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
-
     def calculate_sets(self) -> int:
         """
         Calculate total number of training sets.
@@ -46,10 +42,6 @@ class Meal(models.Model):
     carbs = models.FloatField(default=0.0) # calculated from ingredients carbs
     fats = models.FloatField(default=0.0) # calculated from ingredients fats
     kcal = models.FloatField(default=0.0) # calculated from ingredients calories
-
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
 
     def calculate(self, field: str) -> float:
         """
