@@ -243,8 +243,7 @@ def ingredient_remove(request, pk):
     meal_pk = ingredient.meal.pk
     #if request.method=='POST':
     ingredient.delete()
-    for field in ['protein', 'carbs', 'fats', 'kcal']:
-        meal.__setattr__(field, meal.calculate(field))
+    meal.update_calculated_fields()
     meal.save()
     return redirect('meal_detail', pk=meal_pk)
 
