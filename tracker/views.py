@@ -218,8 +218,7 @@ def ingredient_edit(request, pk):
         form = IngredientForm(request.POST, instance=ingredient)
         if form.is_valid():
             ingredient = form.save(commit=False)
-            for field in ['protein', 'carbs', 'fats', 'kcal']:
-                ingredient.__setattr__(field, ingredient.calculate(field))
+            ingredient.update_calculated_fields()
             ingredient.save()
             meal = ingredient.meal
             for field in ['protein', 'carbs', 'fats', 'kcal']:
