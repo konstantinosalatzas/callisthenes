@@ -102,6 +102,13 @@ class Ingredient(models.Model):
         unit = self.unit
         return (self.quantity * unit.__getattribute__(field) / unit.units)
 
+    def update_calculated_fields(self):
+        """
+        Call calculate().
+        """
+        for field in ['protein', 'carbs', 'fats', 'kcal']:
+            self.__setattr__(field, self.calculate(field))
+
     def __str__(self):
         return "{}, {} @ {} - {}".format(self.meal.user, self.meal.title, self.meal.meal_date,
                                          self.name)
