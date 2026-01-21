@@ -201,8 +201,7 @@ def ingredient_new(request, pk):
             ingredient.meal = get_object_or_404(Meal, pk=pk)
             ingredient.update_calculated_fields()
             ingredient.save()
-            for field in ['protein', 'carbs', 'fats', 'kcal']:
-                meal.__setattr__(field, meal.calculate(field))
+            meal.update_calculated_fields()
             meal.save()
             return redirect('ingredient_detail', pk=ingredient.pk)
     else:
