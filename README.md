@@ -26,7 +26,7 @@ The user can track reps, resistance and more information about a set performed i
 
 ### Ingredients
 
-The user can create macronutrient profiles of the ingredients in his nutrition.
+The user can create nutritional information profiles of ingredients.
 
 ### Meals
 
