@@ -25,7 +25,7 @@ class Set(models.Model):
     set_number = models.IntegerField(default=1)
     reps = models.IntegerField(default=1)
     resistance_weight = models.FloatField(default=0.0)
-    comment = models.CharField(max_length=200)
+    comment = models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):
         return "{}, {} @ {} - {} (set {})".format(self.training.user, self.training.title, self.training.training_date,
