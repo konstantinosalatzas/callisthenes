@@ -59,7 +59,6 @@ class Meal(models.Model):
         """
         for field in ['protein', 'carbs', 'fats', 'kcal']:
             self.__setattr__(field, self.calculate(field))
-        self.save()
 
     def __str__(self):
         return "{}, {} @ {}".format(self.user, self.title, self.meal_date)
@@ -108,7 +107,6 @@ class Ingredient(models.Model):
         """
         for field in ['protein', 'carbs', 'fats', 'kcal']:
             self.__setattr__(field, self.calculate(field))
-        self.save()
 
     def __str__(self):
         return "{}, {} @ {} - {}".format(self.meal.user, self.meal.title, self.meal.meal_date,
