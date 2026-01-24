@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from .models import Unit
+from .models import Unit, Meal
 
 class UnitModelTests(TestCase):
     def test_calculate_calories_with_integer_macronutrient_values(self):
@@ -10,3 +10,12 @@ class UnitModelTests(TestCase):
     def test_calculate_calories_with_float_macronutrient_values(self):
         unit = Unit(protein=20.5, carbs=0.5, fats=0.5)
         self.assertEqual(unit.calculate_calories(), (20.5 * 4.0 + 0.5 * 4.0 + 0.5 * 9.0))
+
+class MealModelTests(TestCase):
+    def test_calculate_without_ingredients(self):
+        """
+        calculate() returns 0 for meals without ingredients.
+        """
+        meal = Meal()
+        for field in ['protein', 'carbs', 'fats', 'kcal']: # test fields
+            self.assertEqual(meal.calculate(field), 0)
