@@ -22,8 +22,8 @@
                     </a>
                     <p id="logout" class="top-menu"> <i>{{ user.username }}</i> <small><form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit">Log out</button></form></small></p>
                     {% else %}
-                    <a href="{% url 'login' %}" class="top-menu">{% include './icons/lock-fill.svg' %} Log in</a>
-                    <a href="{% url 'signup' %}" class="top-menu">{% include './icons/lock-fill.svg' %} Sign up</a>
+                    <a href="{% url 'login' %}" class="top-menu">{% include './icons/box-arrow-in-right.svg' %} Log in</a>
+                    <a href="{% url 'signup' %}" class="top-menu">{% include './icons/person-plus-fill.svg' %} Sign up</a>
                     {% endif %}
                     <h1><a href="/">Callisthenes</a></h1>
                 </div>
