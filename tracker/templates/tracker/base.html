@@ -21,6 +21,7 @@
                         {% include './icons/plus-square-fill.svg' %} Training
                     </a>
                     <p id="logout" class="top-menu"> <i>{{ user.username }}</i> <small><form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit">Log out</button></form></small></p>
+                    <p id="password_change" class="top-menu"> <small><form method="post" action="{% url 'password_change' %}">{% csrf_token %}<button type="submit">Change password</button></form></small></p>
                     {% else %}
                     <a href="{% url 'login' %}" class="top-menu">{% include './icons/box-arrow-in-right.svg' %} Log in</a>
                     <a href="{% url 'signup' %}" class="top-menu">{% include './icons/person-plus.svg' %} Sign up</a>
