@@ -181,7 +181,7 @@ def ingredient_detail(request, pk):
 def ingredient_new(request, pk):
     meal = get_object_or_404(Meal, pk=pk, user=request.user)
     if request.method == "POST":
-        form = IngredientForm(request.POST)
+        form = IngredientForm(request.POST, user=request.user)
         if form.is_valid():
             ingredient = form.save(commit=False)
             ingredient.meal = get_object_or_404(Meal, pk=pk)
@@ -191,7 +191,7 @@ def ingredient_new(request, pk):
             meal.save()
             return redirect('ingredient_detail', pk=ingredient.pk)
     else:
-        form = IngredientForm()
+        form = IngredientForm(user=request.user)
     return render(request, 'tracker/ingredient_new.html', {'form': form, 'meal': meal})
 
 @login_required
@@ -199,7 +199,7 @@ def ingredient_edit(request, pk):
     ingredient = get_object_or_404(Ingredient, pk=pk)
     get_object_or_404(Meal, pk=ingredient.meal.pk, user=request.user)
     if request.method == "POST":
-        form = IngredientForm(request.POST, instance=ingredient)
+        form = IngredientForm(request.POST, instance=ingredient, user=request.user)
         if form.is_valid():
             ingredient = form.save(commit=False)
             ingredient.update_calculated_fields()
@@ -209,7 +209,7 @@ def ingredient_edit(request, pk):
             meal.save()
             return redirect('ingredient_detail', pk=ingredient.pk)
     else:
-        form = IngredientForm(instance=ingredient)
+        form = IngredientForm(instance=ingredient, user=request.user)
     return render(request, 'tracker/ingredient_edit.html', {'form': form, 'ingredient': ingredient})
 
 @login_required

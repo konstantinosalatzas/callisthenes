@@ -30,6 +30,15 @@ class MealForm(forms.ModelForm):
         }
 
 class IngredientForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        """
+        Limit units to user.
+        """
+        user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+        if user is not None:
+            self.fields['unit'].queryset = Unit.objects.filter(user=user).order_by('name')
+
     class Meta:
         model = Ingredient
         fields = ('name', 'quantity', 'unit')
