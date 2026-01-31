@@ -41,7 +41,7 @@ class IngredientForm(forms.ModelForm):
 
     class Meta:
         model = Ingredient
-        fields = ('name', 'quantity', 'unit')
+        fields = ('name', 'unit', 'quantity')
         widgets = {
             'quantity': forms.NumberInput(attrs={'type': 'number', 'min': '0', 'step': '0.1', 'class': 'form-control'}),
         }
