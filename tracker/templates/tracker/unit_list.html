@@ -17,5 +17,7 @@
             <p><i>(per {{ unit.units|linebreaksbr }} {{ unit.unit_of_measurement|linebreaksbr }})</i></p>
             <p><i>Protein: {{ unit.protein|linebreaksbr }} g, Carbohydrates: {{ unit.carbs|linebreaksbr }} g, Fats: {{ unit.fats|linebreaksbr }} g, Calories: {{ unit.kcal|linebreaksbr }} kcal</i></p>
         </article>
+    {% empty %}
+        <p><i>Tip: Begin by adding ingredients!</i></p>
     {% endfor %}
 {% endblock %}
