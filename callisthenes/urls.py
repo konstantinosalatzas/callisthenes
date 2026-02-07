@@ -24,7 +24,7 @@ load_dotenv()
 
 urlpatterns = [
     path('', include('tracker.urls')),
-    path(os.getenv('ADMIN_URL', 'admin/'), admin.site.urls),
+    path(os.getenv('CALLISTHENES_ADMIN_URL', 'admin/'), admin.site.urls),
     path('accounts/login/', views.LoginView.as_view(), name='login'),
     path('accounts/logout/', views.LogoutView.as_view(next_page='/'), name='logout'),
     path('accounts/password_change/', views.PasswordChangeView.as_view(), name='password_change'),
