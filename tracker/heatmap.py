@@ -4,7 +4,7 @@ from collections import defaultdict
 
 from .models import Set
 
-def create_training_heatmap(user, weeks_range=52):
+def training_heatmap(user, weeks_range=52):
     """
     Return a list of weeks containing days with training set counts.
     """
