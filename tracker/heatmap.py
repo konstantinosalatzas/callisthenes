@@ -2,7 +2,7 @@ from django.utils import timezone
 from datetime import timedelta
 from collections import defaultdict
 
-from .models import Training
+from .models import Set
 
 def create_training_heatmap(user, weeks_range=52):
     """
@@ -12,17 +12,17 @@ def create_training_heatmap(user, weeks_range=52):
     today = timezone.now().date()
     start_date = today - timedelta(days=weeks_range*7)
     
-    # Get trainings of the user in the date range
-    trainings = Training.objects.filter(
-        user=user,
-        training_date__isnull=False,
-        training_date__gte=start_date,
-        training_date__lte=today
+    # Get sets of the user in the date range
+    sets = Set.objects.filter(
+        training__user=user,
+        training__training_date__isnull=False,
+        training__training_date__gte=start_date,
+        training__training_date__lte=today
     )
     # Count trainings by date
     activity_count = defaultdict(int)
-    for training in trainings:
-        activity_count[training.training_date] += 1
+    for set in sets:
+        activity_count[set.training.training_date] += 1
     
     # Create heatmap structure
     heatmap = []
