@@ -19,7 +19,7 @@
                     <div class="heatmap-week">
                         {% for day in week.days %}
                             <div class="heatmap-day intensity-{{ day.intensity }}"
-                                 title="{{ day.date }} - {{ day.count }} training(s)">
+                                 title="{{ day.date }} - Trainings: {{ day.count }}">
                             </div>
                         {% endfor %}
                     </div>
