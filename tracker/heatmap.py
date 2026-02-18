@@ -6,6 +6,7 @@ from .models import Set
 
 def training_heatmap(user, weeks_range=52):
     """
+    Create training heatmap.
     Return a list of weeks containing days with training set counts.
     """
 
