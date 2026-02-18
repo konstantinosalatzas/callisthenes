@@ -6,7 +6,7 @@ from .models import Set
 
 def create_training_heatmap(user, weeks_range=52):
     """
-    Return a list of weeks containing days with training counts.
+    Return a list of weeks containing days with training set counts.
     """
 
     today = timezone.now().date()
