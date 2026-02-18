@@ -2,6 +2,42 @@
 
 {% block content %}
 {% if user.is_authenticated %}
+{% if heatmap %}
+    <div class="training-heatmap-container">
+        <h3>My training activity (last 52 weeks)</h3>
+        <div class="training-heatmap">
+            <div class="heatmap-header">
+                <div class="day-labels">
+                    <div class="day-label">Mon</div>
+                    <div class="day-label">Wed</div>
+                    <div class="day-label">Fri</div>
+                    <div class="day-label">Sun</div>
+                </div>
+            </div>
+            <div class="heatmap-grid">
+                {% for week in heatmap %}
+                    <div class="heatmap-week">
+                        {% for day in week.days %}
+                            <div class="heatmap-day intensity-{{ day.intensity }}"
+                                 title="{{ day.date }} - {{ day.count }} training(s)">
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="heatmap-legend">
+            <small>Less</small>
+            <div class="intensity-0"></div>
+            <div class="intensity-1"></div>
+            <div class="intensity-2"></div>
+            <div class="intensity-3"></div>
+            <div class="intensity-4"></div>
+            <small>More</small>
+        </div>
+    </div>
+    <hr class="my-4">
+{% endif %}
 <article class="post">
     <h2>Go to:</h2>
     <ul>

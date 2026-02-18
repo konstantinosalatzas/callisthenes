@@ -91,3 +91,159 @@ small a:visited {
     color: #ffffff;
     text-decoration: none;
 }
+
+/* Training heatmap styles */
+
+.training-heatmap-container {
+    background-color: #f6f8fa;
+    border: 1px solid #d1d9e0;
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+}
+
+.training-heatmap-container h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.training-heatmap {
+    display: flex;
+    gap: 8px;
+    font-size: 12px;
+    margin-bottom: 16px;
+}
+
+.heatmap-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.day-labels {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    height: 140px;
+    justify-content: space-around;
+    padding-bottom: 5px;
+}
+
+.day-label {
+    color: #57606a;
+    font-size: 11px;
+    width: 30px;
+    line-height: 1.2;
+}
+
+.heatmap-grid {
+    display: flex;
+    gap: 2px;
+}
+
+.heatmap-week {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.heatmap-day {
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    background-color: #ebedf0;
+    border: 1px solid #d0cfd0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.heatmap-day:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+
+/* Intensity levels */
+
+.heatmap-day.intensity-0 {
+    background-color: #ebedf0;
+}
+
+.heatmap-day.intensity-1 {
+    background-color: #c6e48b;
+}
+
+.heatmap-day.intensity-2 {
+    background-color: #7bc96f;
+}
+
+.heatmap-day.intensity-3 {
+    background-color: #239a3b;
+}
+
+.heatmap-day.intensity-4 {
+    background-color: #0d3817;
+}
+
+.heatmap-legend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: #57606a;
+}
+
+.heatmap-legend small {
+    width: 30px;
+}
+
+.heatmap-legend > div {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    border: 1px solid #d0cfd0;
+}
+
+.heatmap-legend .intensity-0 {
+    background-color: #ebedf0;
+}
+
+.heatmap-legend .intensity-1 {
+    background-color: #c6e48b;
+}
+
+.heatmap-legend .intensity-2 {
+    background-color: #7bc96f;
+}
+
+.heatmap-legend .intensity-3 {
+    background-color: #239a3b;
+}
+
+.heatmap-legend .intensity-4 {
+    background-color: #0d3817;
+}
+
+/* Adaptat to smaller screens */
+@media (max-width: 768px) {
+    .activity-heatmap-container {
+        padding: 12px;
+    }
+    
+    .heatmap-day {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .heatmap-legend > div {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .day-labels {
+        display: none;
+    }
+}
