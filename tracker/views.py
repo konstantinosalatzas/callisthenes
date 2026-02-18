@@ -4,64 +4,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
-from datetime import datetime, timedelta
-from collections import defaultdict
 
 from .models import Training, Set, Meal, Ingredient, Unit
 from .forms import TrainingForm, SetForm, MealForm, IngredientForm, UnitForm
+from .heatmap import create_training_heatmap
 
 class SignUpView(CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'registration/signup.html'
-
-def create_training_heatmap(user, weeks_range=52):
-    """
-    Create training heatmap.
-    Return a list of weeks, each containing days with training counts.
-    """
-
-    today = timezone.now().date()
-    start_date = today - timedelta(days=weeks_range*7)
-    
-    # Get trainings of the user in the date range
-    trainings = Training.objects.filter(
-        user=user,
-        training_date__isnull=False,
-        training_date__gte=start_date,
-        training_date__lte=today
-    )
-    # Count trainings by date
-    activity_count = defaultdict(int)
-    for training in trainings:
-        activity_count[training.training_date] += 1
-    
-    # Create heatmap structure
-    heatmap = []
-    current_date = start_date
-    days_of_week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    
-    while current_date <= today:
-        week_start = current_date - timedelta(days=current_date.weekday())
-        week_data = {
-            'start_date': week_start,
-            'days': []
-        }
-        for day_offset in range(7):
-            day_date = week_start + timedelta(days=day_offset)
-            if day_date > today:
-                break
-            count = activity_count[day_date]
-            week_data['days'].append({
-                'date': day_date,
-                'count': count,
-                'day_name': days_of_week[day_offset],
-                'intensity': min(count, 4) # Level 0-4 for CSS classes
-            })
-        heatmap.append(week_data)
-        current_date = week_start + timedelta(days=7)
-    
-    return heatmap
 
 def index(request):
     heatmap = []
