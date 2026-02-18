@@ -227,7 +227,7 @@ small a:visited {
     background-color: #0d3817;
 }
 
-/* Adaptat to smaller screens */
+/* Adapt to smaller screens */
 @media (max-width: 768px) {
     .activity-heatmap-container {
         padding: 12px;
