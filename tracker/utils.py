@@ -58,6 +58,7 @@ def macronutrient_percentages(ingredient_pk):
     """
     ingredient = Ingredient.objects.get(pk=ingredient_pk)
 
+    # Convert grams to calories
     protein = 4 * (ingredient.protein or 0)
     carbs = 4 * (ingredient.carbs or 0)
     fats = 9 * (ingredient.fats or 0)
