@@ -52,11 +52,12 @@ def training_heatmap(user, weeks_range=52):
     
     return heatmap
 
-def macronutrient_percentages(pk):
+def macronutrient_percentages(pk, model_name):
     """
     Calculate macronutrient caloric percentages for pie chart.
     """
-    ingredient = Ingredient.objects.get(pk=pk)
+    if model_name == "Ingredient":
+        ingredient = Ingredient.objects.get(pk=pk)
 
     # Convert grams to calories
     protein = 4 * (ingredient.protein or 0)

@@ -179,7 +179,7 @@ def meal_remove(request, pk):
 def ingredient_detail(request, pk):
     ingredient = get_object_or_404(Ingredient, pk=pk)
     get_object_or_404(Meal, pk=ingredient.meal.pk, user=request.user)
-    (p1, p2, p3, p1_p2, total) = macronutrient_percentages(ingredient.pk)
+    (p1, p2, p3, p1_p2, total) = macronutrient_percentages(ingredient.pk, model_name="Ingredient")
     return render(request, 'tracker/ingredient_detail.html', {'ingredient': ingredient,
                                                               'p1': p1, 'p2': p2, 'p3': p3, 'p1_p2': p1_p2, 'total': total})
 
