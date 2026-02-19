@@ -7,7 +7,7 @@ from django.views.generic import CreateView
 
 from .models import Training, Set, Meal, Ingredient, Unit
 from .forms import TrainingForm, SetForm, MealForm, IngredientForm, UnitForm
-from .heatmap import create_training_heatmap
+from .heatmap import training_heatmap
 
 class SignUpView(CreateView):
     form_class = UserCreationForm
@@ -17,7 +17,7 @@ class SignUpView(CreateView):
 def index(request):
     heatmap = []
     if request.user.is_authenticated:
-        heatmap = create_training_heatmap(request.user)
+        heatmap = training_heatmap(request.user)
     return render(request, 'tracker/index.html', {'heatmap': heatmap})
 
 # Training model
