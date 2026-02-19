@@ -175,11 +175,27 @@ def meal_remove(request, pk):
 
 # Ingredient model
 
+def macronutrient_percentages(ingredient):
+    protein = ingredient.protein or 0
+    carbs = ingredient.carbs or 0
+    fats = ingredient.fats or 0
+    total_macros = protein + carbs + fats
+    if total_macros:
+        p1 = round(protein / total_macros * 100, 1)
+        p2 = round(carbs / total_macros * 100, 1)
+        p3 = round(fats / total_macros * 100, 1)
+    else:
+        p1 = p2 = p3 = 0.0
+    p1_p2 = round(p1 + p2, 1)
+    return (p1, p2, p3, p1_p2, total_macros)
+
 @login_required
 def ingredient_detail(request, pk):
     ingredient = get_object_or_404(Ingredient, pk=pk)
     get_object_or_404(Meal, pk=ingredient.meal.pk, user=request.user)
-    return render(request, 'tracker/ingredient_detail.html', {'ingredient': ingredient})
+    (p1, p2, p3, p1_p2, total_macros) = macronutrient_percentages(ingredient)
+    return render(request, 'tracker/ingredient_detail.html', {'ingredient': ingredient,
+                                                              'p1': p1, 'p2': p2, 'p3': p3, 'p1_p2': p1_p2, 'total_macros': total_macros,})
 
 @login_required
 def ingredient_new(request, pk):
