@@ -57,12 +57,12 @@ def macronutrient_percentages(ingredient_pk):
     protein = (4 * ingredient.protein) or 0
     carbs = (4 * ingredient.carbs) or 0
     fats = (9 * ingredient.fats) or 0
-    total_macros = protein + carbs + fats
-    if total_macros:
-        p1 = round(protein / total_macros * 100, 1)
-        p2 = round(carbs / total_macros * 100, 1)
-        p3 = round(fats / total_macros * 100, 1)
+    total_calories = protein + carbs + fats
+    if total_calories:
+        p1 = round(protein / total_calories * 100, 1)
+        p2 = round(carbs / total_calories * 100, 1)
+        p3 = round(fats / total_calories * 100, 1)
     else:
         p1 = p2 = p3 = 0.0
     p1_p2 = round(p1 + p2, 1)
-    return (p1, p2, p3, p1_p2, total_macros)
+    return (p1, p2, p3, p1_p2, total_calories)
