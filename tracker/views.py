@@ -241,6 +241,7 @@ def unit_list(request):
 @login_required
 def unit_detail(request, pk):
     unit = get_object_or_404(Unit, pk=pk, user=request.user)
+    (p1, p2, p3, p1_p2, total) = macronutrient_percentages(unit.pk, model_name="Unit")
     return render(request, 'tracker/unit_detail.html', {'unit': unit})
 
 @login_required
