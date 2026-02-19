@@ -55,9 +55,9 @@ def training_heatmap(user, weeks_range=52):
 def macronutrient_percentages(ingredient_pk):
     ingredient = Ingredient.objects.get(pk=ingredient_pk)
 
-    protein = (4 * ingredient.protein) or 0
-    carbs = (4 * ingredient.carbs) or 0
-    fats = (9 * ingredient.fats) or 0
+    protein = 4 * (ingredient.protein or 0)
+    carbs = 4 * (ingredient.carbs or 0)
+    fats = 9 * (ingredient.fats or 0)
     total_calories = protein + carbs + fats
 
     if total_calories:
