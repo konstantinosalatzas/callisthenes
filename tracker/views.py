@@ -7,7 +7,7 @@ from django.views.generic import CreateView
 
 from .models import Training, Set, Meal, Ingredient, Unit
 from .forms import TrainingForm, SetForm, MealForm, IngredientForm, UnitForm
-from .heatmap import training_heatmap
+from .utils import training_heatmap
 
 class SignUpView(CreateView):
     form_class = UserCreationForm
