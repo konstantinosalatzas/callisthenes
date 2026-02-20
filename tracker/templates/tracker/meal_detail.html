@@ -14,21 +14,6 @@
                     {% include './icons/trash-fill.svg' %}
                 </a>
             {% endif %}
-            <div>
-                {% if total %}
-                    <div class="pie-row" style="display:flex;align-items:center;gap:1rem;">
-                        <div class="pie-wrapper" style="width:180px;height:180px;">
-                            <div class="pie" style="width:100%;height:100%;border-radius:50%;background: conic-gradient(#4e79a7 0% {{ p1 }}%, #f28e2b {{ p1 }}% {{ p1_p2 }}%, #e15759 {{ p1_p2 }}% 100%);box-shadow:inset 0 0 0 8px #fff"></div>
-                        </div>
-                        <ul class="legend" style="list-style:none;margin:0;padding:0;">
-                            Caloric percentages:
-                            <li style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem;"><span style="display:inline-block;width:14px;height:14px;background:#4e79a7;border-radius:3px;"></span> Protein — {{ p1 }}%</li>
-                            <li style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem;"><span style="display:inline-block;width:14px;height:14px;background:#f28e2b;border-radius:3px;"></span> Carbohydrates — {{ p2 }}%</li>
-                            <li style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem;"><span style="display:inline-block;width:14px;height:14px;background:#e15759;border-radius:3px;"></span> Fats — {{ p3 }}%</li>
-                        </ul>
-                    </div>
-                {% endif %}
-            </div>
         </aside>
         {% if meal.published_date %}
             <div class="date">
@@ -45,6 +30,23 @@
 
         <p>Meal #{{ meal.meal_number|linebreaksbr }} of the day</p>
         <p>Protein: {{ meal.protein|linebreaksbr }} g, Carbohydrates: {{ meal.carbs|linebreaksbr }} g, Fats: {{ meal.fats|linebreaksbr }} g, Calories: {{ meal.kcal|linebreaksbr }} kcal</p>
+        <aside class="actions">
+            <div>
+                {% if total %}
+                    <div class="pie-row" style="display:flex;align-items:center;gap:1rem;">
+                        <div class="pie-wrapper" style="width:180px;height:180px;">
+                            <div class="pie" style="width:100%;height:100%;border-radius:50%;background: conic-gradient(#4e79a7 0% {{ p1 }}%, #f28e2b {{ p1 }}% {{ p1_p2 }}%, #e15759 {{ p1_p2 }}% 100%);box-shadow:inset 0 0 0 8px #fff"></div>
+                        </div>
+                        <ul class="legend" style="list-style:none;margin:0;padding:0;">
+                            Caloric percentages:
+                            <li style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem;"><span style="display:inline-block;width:14px;height:14px;background:#4e79a7;border-radius:3px;"></span> Protein — {{ p1 }}%</li>
+                            <li style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem;"><span style="display:inline-block;width:14px;height:14px;background:#f28e2b;border-radius:3px;"></span> Carbohydrates — {{ p2 }}%</li>
+                            <li style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem;"><span style="display:inline-block;width:14px;height:14px;background:#e15759;border-radius:3px;"></span> Fats — {{ p3 }}%</li>
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </aside>
 
         {% block subcontent %}
             {% for ingredient in ingredients %}
