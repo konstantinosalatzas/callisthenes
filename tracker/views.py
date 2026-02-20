@@ -134,8 +134,10 @@ def meal_list(request):
 def meal_detail(request, pk):
     meal = get_object_or_404(Meal, pk=pk, user=request.user)
     ingredients = Ingredient.objects.filter(meal=pk).order_by('name')
+    (p1, p2, p3, p1_p2, total) = macronutrient_percentages(meal.pk, model_name="Meal")
     return render(request, 'tracker/meal_detail.html', {'meal': meal,
-                                                        'ingredients': ingredients})
+                                                        'ingredients': ingredients,
+                                                        'p1': p1, 'p2': p2, 'p3': p3, 'p1_p2': p1_p2, 'total': total})
 
 @login_required
 def meal_new(request):
