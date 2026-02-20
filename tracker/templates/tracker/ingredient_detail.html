@@ -12,6 +12,14 @@
                 </a>
             {% endif %}
         </aside>
+        <h2>
+            <a class="btn btn-secondary" href="{% url 'meal_detail' pk=ingredient.meal.pk %}">
+                {% include './icons/arrow-left.svg' %}
+            </a>
+            {{ ingredient.name }}
+        </h2>
+        <br>
+        <p><i>in <a href="{% url 'meal_detail' pk=ingredient.meal.pk %}">{{ ingredient.meal.title }} @ {{ ingredient.meal.meal_date }}</a></i><p>
         <aside class="actions">
             <div>
                 {% if total %}
@@ -29,14 +37,6 @@
                 {% endif %}
             </div>
         </aside>
-        <h2>
-            <a class="btn btn-secondary" href="{% url 'meal_detail' pk=ingredient.meal.pk %}">
-                {% include './icons/arrow-left.svg' %}
-            </a>
-            {{ ingredient.name }}
-        </h2>
-        <br>
-        <p><i>in <a href="{% url 'meal_detail' pk=ingredient.meal.pk %}">{{ ingredient.meal.title }} @ {{ ingredient.meal.meal_date }}</a></i><p>
         <p>Quantity: {{ ingredient.quantity|linebreaksbr }} {{ ingredient.unit.unit_of_measurement|linebreaksbr }}</p>
         <p>Protein: {{ ingredient.protein|linebreaksbr }} g</p>
         <p>Carbohydrates: {{ ingredient.carbs|linebreaksbr }} g</p>
