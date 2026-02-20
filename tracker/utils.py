@@ -2,7 +2,7 @@ from django.utils import timezone
 from datetime import timedelta
 from collections import defaultdict
 
-from .models import Set, Ingredient, Unit
+from .models import Set, Ingredient, Unit, Meal
 
 def training_heatmap(user, weeks_range=52):
     """
@@ -59,6 +59,8 @@ def macronutrient_percentages(pk, model_name):
         obj = Ingredient.objects.get(pk=pk)
     if model_name == "Unit":
         obj = Unit.objects.get(pk=pk)
+    if model_name == "Meal":
+        obj = Meal.objects.get(pk=pk)
 
     # Convert grams to calories
     protein = 4 * (obj.protein or 0)
