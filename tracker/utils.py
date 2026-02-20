@@ -2,7 +2,7 @@ from django.utils import timezone
 from datetime import timedelta
 from collections import defaultdict
 
-from .models import Set
+from .models import Set, Ingredient, Unit
 
 def training_heatmap(user, weeks_range=52):
     """
@@ -51,3 +51,28 @@ def training_heatmap(user, weeks_range=52):
         current_date = week_start + timedelta(days=7)
     
     return heatmap
+
+def macronutrient_percentages(pk, model_name):
+    """
+    Calculate macronutrient caloric percentages for pie chart.
+    """
+    if model_name == "Ingredient":
+        obj = Ingredient.objects.get(pk=pk)
+    if model_name == "Unit":
+        obj = Unit.objects.get(pk=pk)
+
+    # Convert grams to calories
+    protein = 4 * (obj.protein or 0)
+    carbs = 4 * (obj.carbs or 0)
+    fats = 9 * (obj.fats or 0)
+    total_calories = protein + carbs + fats
+
+    if total_calories:
+        p1 = round(protein / total_calories * 100, 1)
+        p2 = round(carbs / total_calories * 100, 1)
+        p3 = round(fats / total_calories * 100, 1)
+    else:
+        p1 = p2 = p3 = 0.0
+    p1_p2 = round(p1 + p2, 1)
+
+    return (p1, p2, p3, p1_p2, total_calories)
