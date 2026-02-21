@@ -98,7 +98,7 @@ class Ingredient(models.Model):
 
     def calculate(self, field: str) -> float:
         """
-        Calculate ingredient protein/carbs/fats/calories from macronutrients per number of units.
+        Calculate ingredient protein/carbs/fats/calories/cost per number of units.
         """
         unit = self.unit
         return (self.quantity * unit.__getattribute__(field) / unit.units)
