@@ -31,3 +31,13 @@ The user can create nutritional information profiles of ingredients.
 ### Meals
 
 The user can track meals had at specified dates and the ingredients in a meal (with information about quantity, macronutrients and more).
+
+## Example screenshots
+
+### Training heatmap
+
+![](./docs/training_heatmap.png)
+
+### Macronutrient pie chart
+
+![](./docs/meal_pie_chart.png)
