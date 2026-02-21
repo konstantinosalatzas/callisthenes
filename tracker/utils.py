@@ -56,16 +56,16 @@ def macronutrient_percentages(pk, model_name):
     Calculate macronutrient caloric percentages for pie chart.
     """
     if model_name == "Ingredient":
-        obj = Ingredient.objects.get(pk=pk)
+        object = Ingredient.objects.get(pk=pk)
     if model_name == "Unit":
-        obj = Unit.objects.get(pk=pk)
+        object = Unit.objects.get(pk=pk)
     if model_name == "Meal":
-        obj = Meal.objects.get(pk=pk)
+        object = Meal.objects.get(pk=pk)
 
     # Convert grams to calories
-    protein = 4 * (obj.protein or 0)
-    carbs = 4 * (obj.carbs or 0)
-    fats = 9 * (obj.fats or 0)
+    protein = 4 * (object.protein or 0)
+    carbs = 4 * (object.carbs or 0)
+    fats = 9 * (object.fats or 0)
     total_calories = protein + carbs + fats
 
     if total_calories:
