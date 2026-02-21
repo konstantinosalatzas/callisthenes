@@ -58,7 +58,7 @@ class Meal(models.Model):
         """
         Call calculate().
         """
-        for field in ['protein', 'carbs', 'fats', 'kcal']:
+        for field in ['protein', 'carbs', 'fats', 'kcal', 'cost']:
             self.__setattr__(field, self.calculate(field))
 
     def __str__(self):
