@@ -42,10 +42,11 @@ class Meal(models.Model):
     carbs = models.FloatField(default=0.0) # calculated from ingredients carbs
     fats = models.FloatField(default=0.0) # calculated from ingredients fats
     kcal = models.FloatField(default=0.0) # calculated from ingredients calories
+    cost = models.FloatField(default=0.0) # calculated from ingredients cost
 
     def calculate(self, field: str) -> float:
         """
-        Calculate meal protein/carbs/fats/calories from ingredients macronutrients.
+        Calculate meal protein/carbs/fats/calories/cost from ingredients.
         """
         ingredients = Ingredient.objects.filter(meal=self.pk)
         sum = 0.0
@@ -57,7 +58,7 @@ class Meal(models.Model):
         """
         Call calculate().
         """
-        for field in ['protein', 'carbs', 'fats', 'kcal']:
+        for field in ['protein', 'carbs', 'fats', 'kcal', 'cost']:
             self.__setattr__(field, self.calculate(field))
 
     def __str__(self):
@@ -74,6 +75,7 @@ class Unit(models.Model):
     carbs = models.FloatField(default=0.0) # in grams per number of units
     fats = models.FloatField(default=0.0) # in grams per number of units
     kcal = models.FloatField(default=0.0) # calculated from macronutrients per number of units
+    cost = models.FloatField(default=0.0) # in euros per number of units
 
     def calculate_calories(self) -> float:
         """
@@ -93,10 +95,11 @@ class Ingredient(models.Model):
     carbs = models.FloatField(default=0.0) # calculated from carbs per number of units
     fats = models.FloatField(default=0.0) # calculated from fats per number of units
     kcal = models.FloatField(default=0.0) # calculated from calories per number of units
+    cost = models.FloatField(default=0.0) # calculated from cost per number of units
 
     def calculate(self, field: str) -> float:
         """
-        Calculate ingredient protein/carbs/fats/calories from macronutrients per number of units.
+        Calculate ingredient protein/carbs/fats/calories/cost from quantity per number of units.
         """
         unit = self.unit
         return (self.quantity * unit.__getattribute__(field) / unit.units)
@@ -105,7 +108,7 @@ class Ingredient(models.Model):
         """
         Call calculate().
         """
-        for field in ['protein', 'carbs', 'fats', 'kcal']:
+        for field in ['protein', 'carbs', 'fats', 'kcal', 'cost']:
             self.__setattr__(field, self.calculate(field))
 
     def __str__(self):
