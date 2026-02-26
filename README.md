@@ -10,7 +10,7 @@ Now its tech stack is:
 
 * PostgreSQL/SQLite DB
 
-* HTML/CSS front-end
+* HTML-CSS front-end
 
 ## Training tracking
 
