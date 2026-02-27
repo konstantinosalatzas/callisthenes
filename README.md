@@ -8,9 +8,9 @@ Now its tech stack is:
 
 * Python-Django back-end
 
-* SQLite DB
+* PostgreSQL/SQLite DB
 
-* HTML/CSS front-end
+* HTML-CSS front-end
 
 ## Training tracking
 
