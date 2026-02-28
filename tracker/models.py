@@ -47,7 +47,7 @@ class Meal(models.Model):
 
     def calculate(self, field: str) -> float:
         """
-        Calculate meal protein/carbs/fats/calories/cost from ingredients.
+        Calculate meal protein/carbs/fats/fiber/calories/cost from ingredients.
         """
         ingredients = Ingredient.objects.filter(meal=self.pk)
         sum = 0.0
