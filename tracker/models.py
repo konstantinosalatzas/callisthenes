@@ -74,6 +74,7 @@ class Unit(models.Model):
     protein = models.FloatField(default=0.0) # in grams per number of units
     carbs = models.FloatField(default=0.0) # in grams per number of units
     fats = models.FloatField(default=0.0) # in grams per number of units
+    fiber = models.FloatField(default=0.0) # in grams per number of units
     kcal = models.FloatField(default=0.0) # calculated from macronutrients per number of units
     cost = models.FloatField(default=0.0) # in euros per number of units
 
