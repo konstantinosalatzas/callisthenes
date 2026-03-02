@@ -41,12 +41,13 @@ class Meal(models.Model):
     protein = models.FloatField(default=0.0) # calculated from ingredients protein
     carbs = models.FloatField(default=0.0) # calculated from ingredients carbs
     fats = models.FloatField(default=0.0) # calculated from ingredients fats
+    fiber = models.FloatField(default=0.0) # calculated from ingredients fiber
     kcal = models.FloatField(default=0.0) # calculated from ingredients calories
     cost = models.FloatField(default=0.0) # calculated from ingredients cost
 
     def calculate(self, field: str) -> float:
         """
-        Calculate meal protein/carbs/fats/calories/cost from ingredients.
+        Calculate meal protein/carbs/fats/fiber/calories/cost from ingredients.
         """
         ingredients = Ingredient.objects.filter(meal=self.pk)
         sum = 0.0
@@ -58,7 +59,7 @@ class Meal(models.Model):
         """
         Call calculate().
         """
-        for field in ['protein', 'carbs', 'fats', 'kcal', 'cost']:
+        for field in ['protein', 'carbs', 'fats', 'fiber', 'kcal', 'cost']:
             self.__setattr__(field, self.calculate(field))
 
     def __str__(self):
@@ -74,6 +75,7 @@ class Unit(models.Model):
     protein = models.FloatField(default=0.0) # in grams per number of units
     carbs = models.FloatField(default=0.0) # in grams per number of units
     fats = models.FloatField(default=0.0) # in grams per number of units
+    fiber = models.FloatField(default=0.0) # in grams per number of units
     kcal = models.FloatField(default=0.0) # calculated from macronutrients per number of units
     cost = models.FloatField(default=0.0) # in euros per number of units
 
@@ -94,12 +96,13 @@ class Ingredient(models.Model):
     protein = models.FloatField(default=0.0) # calculated from protein per number of units
     carbs = models.FloatField(default=0.0) # calculated from carbs per number of units
     fats = models.FloatField(default=0.0) # calculated from fats per number of units
+    fiber = models.FloatField(default=0.0) # calculated from fiber per number of units
     kcal = models.FloatField(default=0.0) # calculated from calories per number of units
     cost = models.FloatField(default=0.0) # calculated from cost per number of units
 
     def calculate(self, field: str) -> float:
         """
-        Calculate ingredient protein/carbs/fats/calories/cost from quantity per number of units.
+        Calculate ingredient protein/carbs/fats/fiber/calories/cost from quantity per number of units.
         """
         unit = self.unit
         return (self.quantity * unit.__getattribute__(field) / unit.units)
@@ -108,7 +111,7 @@ class Ingredient(models.Model):
         """
         Call calculate().
         """
-        for field in ['protein', 'carbs', 'fats', 'kcal', 'cost']:
+        for field in ['protein', 'carbs', 'fats', 'fiber', 'kcal', 'cost']:
             self.__setattr__(field, self.calculate(field))
 
     def __str__(self):
