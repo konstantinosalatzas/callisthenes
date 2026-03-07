@@ -77,3 +77,17 @@ def macronutrient_percentages(pk, model_name):
     p1_p2 = round(p1 + p2, 1)
 
     return (p1, p2, p3, p1_p2, total_calories)
+
+def total_values_of_meals(meals):
+    """
+    Calculate total values of the meals of a day.
+    """
+    protein = carbs = fats = fiber = kcal = cost = 0
+    for meal in meals:
+        protein += meal.protein
+        carbs += meal.carbs
+        fats += meal.fats
+        fiber += meal.fiber
+        kcal += meal.kcal
+        cost += meal.cost
+    return (protein, carbs, fats, fiber, kcal, cost)
