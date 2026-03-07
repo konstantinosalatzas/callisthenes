@@ -9,7 +9,7 @@
     </h2>
     <br>
     <form action="{% url 'meal_list' %}" method="get">
-        <input name="meal_date" type="date">
+        <input name="date" type="date">
         <button type="submit">Go</button>
     </form>
     {% for meal in meals %}
