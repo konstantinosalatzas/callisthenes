@@ -128,6 +128,9 @@ def meal_list(request):
     meals = []
     if request.user.is_authenticated:
         meals = Meal.objects.filter(user=request.user, published_date__lte=timezone.now()).order_by('-meal_date', 'meal_number')
+        date = request.GET.get("date") # Check date form
+        if date:
+            meals = meals.filter(meal_date=date)
     return render(request, 'tracker/meal_list.html', {'meals': meals})
 
 @login_required
