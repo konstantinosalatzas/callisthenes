@@ -134,10 +134,10 @@ def meal_list(request):
         date = request.GET.get("date") # Check date form
         if date:
             meals = meals.filter(meal_date=date)
-            (protein, carbs, fats, kcal, fiber, cost) = total_values_of_meals(meals)
+            (protein, carbs, fats, fiber, kcal, cost) = total_values_of_meals(meals)
             return render(request, 'tracker/meal_list.html', {'meals': meals,
                                                               'protein': protein, 'carbs': carbs, 'fats': fats,
-                                                              'kcal': kcal, 'fiber': fiber, 'cost': cost})
+                                                              'fiber': fiber, 'kcal': kcal, 'cost': cost})
     return render(request, 'tracker/meal_list.html', {'meals': meals})
 
 @login_required
