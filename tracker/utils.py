@@ -80,7 +80,7 @@ def macronutrient_percentages(pk, model_name):
 
 def total_values_of_meals(meals):
     """
-    Calculate total values of the meals of a day.
+    Calculate total values of meals.
     """
     protein = carbs = fats = fiber = kcal = cost = 0
     for meal in meals:
