@@ -11,6 +11,7 @@
     <form action="{% url 'training_list' %}" method="get">
         <input name="date" type="date">
         <button type="submit">Go</button>
+        <a href="{% url 'training_list' %}"><button type="button">Reset</button></a>
     </form>
     <br>
     {% for training in trainings %}
