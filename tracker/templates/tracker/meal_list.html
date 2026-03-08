@@ -11,6 +11,7 @@
     <form action="{% url 'meal_list' %}" method="get">
         <input name="date" type="date">
         <button type="submit">Go</button>
+        <a href="{% url 'meal_list' %}"><button type="button">Reset</button></a>
     </form>
     <br>
     {% if protein %}
