@@ -7,7 +7,7 @@ from django.views.generic import CreateView
 
 from .models import Training, Set, Meal, Ingredient, Unit
 from .forms import TrainingForm, SetForm, MealForm, IngredientForm, UnitForm
-from .utils import training_heatmap, macronutrient_percentages
+from .utils import training_heatmap, macronutrient_percentages, total_values_of_meals
 
 class SignUpView(CreateView):
     form_class = UserCreationForm
@@ -27,6 +27,9 @@ def training_list(request):
     trainings = []
     if request.user.is_authenticated:
         trainings = Training.objects.filter(user=request.user, published_date__lte=timezone.now()).order_by('-training_date')
+        date = request.GET.get("date") # Check date form
+        if date:
+            trainings = trainings.filter(training_date=date)
     return render(request, 'tracker/training_list.html', {'trainings': trainings})
 
 @login_required
@@ -128,6 +131,13 @@ def meal_list(request):
     meals = []
     if request.user.is_authenticated:
         meals = Meal.objects.filter(user=request.user, published_date__lte=timezone.now()).order_by('-meal_date', 'meal_number')
+        date = request.GET.get("date") # Check date form
+        if date:
+            meals = meals.filter(meal_date=date)
+            (protein, carbs, fats, fiber, kcal, cost) = total_values_of_meals(meals)
+            return render(request, 'tracker/meal_list.html', {'meals': meals,
+                                                              'protein': protein, 'carbs': carbs, 'fats': fats,
+                                                              'fiber': fiber, 'kcal': kcal, 'cost': cost})
     return render(request, 'tracker/meal_list.html', {'meals': meals})
 
 @login_required

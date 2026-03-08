@@ -8,6 +8,11 @@
         My trainings:
     </h2>
     <br>
+    <form action="{% url 'training_list' %}" method="get">
+        <input name="date" type="date">
+        <button type="submit">Go</button>
+    </form>
+    <br>
     {% for training in trainings %}
         <article class="post">
             <time class="date">
