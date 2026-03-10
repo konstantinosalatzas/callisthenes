@@ -18,9 +18,9 @@
                 {% for week in heatmap %}
                     <div class="heatmap-week">
                         {% for day in week.days %}
-                            <div class="heatmap-day intensity-{{ day.intensity }}"
-                                 title="{{ day.date }} - Sets: {{ day.count }}">
-                            </div>
+                            <a class="heatmap-day intensity-{{ day.intensity }}"
+                               title="{{ day.date }} - Sets: {{ day.count }}"
+                               href="{% url 'training_list' %}?date={{ day.date|date:'Y-m-d' }}"></a>
                         {% endfor %}
                     </div>
                 {% endfor %}
