@@ -98,6 +98,7 @@ class Ingredient(models.Model):
     carbs = models.FloatField(default=0.0) # calculated from carbs per number of units
     fats = models.FloatField(default=0.0) # calculated from fats per number of units
     fiber = models.FloatField(default=0.0) # calculated from fiber per number of units
+    sodium = models.FloatField(default=0.0) # calculated from sodium per number of units
     kcal = models.FloatField(default=0.0) # calculated from calories per number of units
     cost = models.FloatField(default=0.0) # calculated from cost per number of units
 
