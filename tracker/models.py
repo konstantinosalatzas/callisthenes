@@ -42,6 +42,7 @@ class Meal(models.Model):
     carbs = models.FloatField(default=0.0) # calculated from ingredients carbs
     fats = models.FloatField(default=0.0) # calculated from ingredients fats
     fiber = models.FloatField(default=0.0) # calculated from ingredients fiber
+    sodium = models.FloatField(default=0.0) # calculated from ingredients sodium
     kcal = models.FloatField(default=0.0) # calculated from ingredients calories
     cost = models.FloatField(default=0.0) # calculated from ingredients cost
 
