@@ -41,3 +41,7 @@ The user can track meals had at specified dates and the ingredients in a meal (w
 ### Macronutrient pie chart
 
 ![](./docs/meal_pie_chart.png)
+
+### Meals of a day
+
+![](./docs/meals_of_a_day.png)
