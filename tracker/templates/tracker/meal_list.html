@@ -16,7 +16,7 @@
     <br>
     {% if protein %}
         <p>Total values of the day:</p>
-        <p>Protein: {{ protein|linebreaksbr }} g, Carbohydrates: {{ carbs|linebreaksbr }} g, Fats: {{ fats|linebreaksbr }} g, Fiber: {{ fiber|linebreaksbr }} g, Calories: {{ kcal|linebreaksbr }} kcal, Cost: {{ cost|linebreaksbr }} €</p>
+        <p>Protein: {{ protein|linebreaksbr }} g, Carbohydrates: {{ carbs|linebreaksbr }} g, Fats: {{ fats|linebreaksbr }} g, Fiber: {{ fiber|linebreaksbr }} g, Sodium: {{ sodium|linebreaksbr }} g, Calories: {{ kcal|linebreaksbr }} kcal, Cost: {{ cost|linebreaksbr }} €</p>
     {% endif %}
     {% for meal in meals %}
         <article class="post">

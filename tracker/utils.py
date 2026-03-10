@@ -82,12 +82,13 @@ def total_values_of_meals(meals):
     """
     Calculate total values of meals.
     """
-    protein = carbs = fats = fiber = kcal = cost = 0
+    protein = carbs = fats = fiber = sodium = kcal = cost = 0
     for meal in meals:
         protein += meal.protein
         carbs += meal.carbs
         fats += meal.fats
         fiber += meal.fiber
+        sodium += meal.sodium
         kcal += meal.kcal
         cost += meal.cost
-    return (protein, carbs, fats, fiber, kcal, cost)
+    return (protein, carbs, fats, fiber, sodium, kcal, cost)
