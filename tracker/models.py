@@ -113,7 +113,7 @@ class Ingredient(models.Model):
         """
         Call calculate().
         """
-        for field in ['protein', 'carbs', 'fats', 'fiber', 'kcal', 'cost']:
+        for field in ['protein', 'carbs', 'fats', 'fiber', 'sodium', 'kcal', 'cost']:
             self.__setattr__(field, self.calculate(field))
 
     def __str__(self):
