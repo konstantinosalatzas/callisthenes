@@ -88,7 +88,7 @@ def total_values_of_meals(meals):
             kv[field] += meal.__getattribute__(field)
     return (kv['protein'], kv['carbs'], kv['fats'], kv['fiber'], kv['sodium'], kv['kcal'], kv['cost'])
 
-def search_name(objects):
+def search_name(objects, name):
     """
     TODO
     """
