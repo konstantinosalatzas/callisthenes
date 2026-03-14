@@ -92,5 +92,4 @@ def search_name(objects, name):
     """
     Return the subset of the objects that their name contains the input name.
     """
-    objects = objects.filter(name__icontains=name.strip())
-    return objects
+    return objects.filter(name__icontains=name.strip())
