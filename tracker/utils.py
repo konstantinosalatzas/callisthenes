@@ -85,6 +85,8 @@ def total_values_of_meals(meals):
     kv = {'protein': 0, 'carbs': 0, 'fats': 0, 'fiber': 0, 'sodium': 0, 'kcal': 0, 'cost': 0}
     protein = carbs = fats = fiber = sodium = kcal = cost = 0
     for meal in meals:
+        for field in kv:
+            kv[field] += meal.__getattribute__(field)
         protein += meal.protein
         carbs += meal.carbs
         fats += meal.fats
