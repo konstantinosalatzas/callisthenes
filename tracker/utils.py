@@ -90,6 +90,7 @@ def total_values_of_meals(meals):
 
 def search_name(objects, name):
     """
-    TODO
+    Return the subset of the objects that their name contains the input name.
     """
+    objects = objects.filter(name__icontains=name)
     return objects
