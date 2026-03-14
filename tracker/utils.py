@@ -94,4 +94,5 @@ def total_values_of_meals(meals):
         sodium += meal.sodium
         kcal += meal.kcal
         cost += meal.cost
+    return (kv['protein'], kv['carbs'], kv['fats'], kv['fiber'], kv['sodium'], kv['kcal'], kv['cost'])
     return (protein, carbs, fats, fiber, sodium, kcal, cost)
