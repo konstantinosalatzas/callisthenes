@@ -8,6 +8,10 @@
         My ingredients:
     </h2>
     <br>
+    <form action="{% url 'unit_list' %}" method="get">
+        <input name="name" type="text" placeholder="Search...">
+    </form>
+    <br>
     {% for unit in units %}
         <article class="post">
             <time class="date">
