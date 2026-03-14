@@ -10,6 +10,8 @@
     <br>
     <form action="{% url 'unit_list' %}" method="get">
         <input name="name" type="text" placeholder="Search...">
+        <button type="submit">Go</button>
+        <a href="{% url 'unit_list' %}"><button type="button">Reset</button></a>
     </form>
     <br>
     {% for unit in units %}
