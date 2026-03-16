@@ -7,7 +7,7 @@ from django.views.generic import CreateView
 
 from .models import Training, Set, Meal, Ingredient, Unit
 from .forms import TrainingForm, SetForm, MealForm, IngredientForm, UnitForm
-from .utils import training_heatmap, macronutrient_percentages, total_values_of_meals
+from .utils import training_heatmap, macronutrient_percentages, total_values_of_meals, search_name
 
 class SignUpView(CreateView):
     form_class = UserCreationForm
@@ -248,6 +248,9 @@ def unit_list(request):
     units = []
     if request.user.is_authenticated:
         units = Unit.objects.filter(user=request.user, published_date__lte=timezone.now()).order_by('name')
+        name = request.GET.get("name") # Check name form
+        if name:
+            units = search_name(units, name)
     return render(request, 'tracker/unit_list.html', {'units': units})
 
 @login_required
