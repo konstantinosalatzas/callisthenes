@@ -118,41 +118,41 @@
         <div class="label">
             <div class="title">Nutrition Facts</div>
 
-            <div class="serving">Per 0 g</div>
+            <div class="serving">Per {{ unit.units|linebreaksbr }} {{ unit.unit_of_measurement|linebreaksbr }}</div>
 
             <div class="divider"></div>
 
             <div class="calories">
                 <div class="bold">Calories</div>
-                <div class="large">0 kcal</div>
+                <div class="large">{{ unit.kcal|linebreaksbr }} kcal</div>
             </div>
 
             <div class="divider"></div>
 
             <div class="row bold">
-                <span>Fat 0 g</span>
+                <span>Fat {{ unit.fats|linebreaksbr }} g</span>
             </div>
             <div class="thin-divider"></div>
 
             <div class="row bold">
-                <span>Carbohydrate 0 g</span>
+                <span>Carbohydrate {{ unit.carbs|linebreaksbr }} g</span>
             </div>
             <div class="thin-divider"></div>
 
             <div class="row indent">
-                <span>Fiber 0 g</span>
+                <span>Fiber {{ unit.fiber|linebreaksbr }} g</span>
             </div>
             <div class="thin-divider"></div>
 
             <div class="row bold">
-                <span>Protein 0 g</span>
+                <span>Protein {{ unit.protein|linebreaksbr }} g</span>
                 <span></span>
             </div>
 
             <div class="divider"></div>
 
             <div class="row">
-                <span>Sodium 0 g</span>
+                <span>Sodium {{ unit.sodium|linebreaksbr }} g</span>
             </div>
         </div>
 
