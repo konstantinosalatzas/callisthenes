@@ -107,7 +107,6 @@
                 align-items: baseline;
             }
         </style>
-
         <div class="label">
             <div class="title">Nutrition Facts</div>
 
@@ -147,7 +146,12 @@
             <div class="row">
                 <span>Sodium {{ unit.sodium|linebreaksbr }} g</span>
             </div>
-        </div>
 
+            <div class="divider"></div>
+
+            <div class="row">
+                <span>Cost {{ unit.cost|linebreaksbr }} €</span>
+            </div>
+        </div>
     </article>
 {% endblock %}
