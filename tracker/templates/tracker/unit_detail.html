@@ -52,5 +52,109 @@
         <p>Calories: {{ unit.kcal|linebreaksbr }} kcal</p>
         <p>Cost: {{ unit.cost|linebreaksbr }} €</p>
 
+        <style>
+            .label {
+                width: 300px;
+                background: #fff;
+                border: 3px solid #000;
+                padding: 10px;
+                color: #000;
+            }
+
+            .title {
+                font-size: 28px;
+                font-weight: 900;
+                border-bottom: 10px solid #000;
+                padding-bottom: 5px;
+                margin-bottom: 5px;
+            }
+
+            .serving {
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+
+            .divider {
+                border-top: 5px solid #000;
+                margin: 5px 0;
+            }
+
+            .thin-divider {
+                border-top: 1px solid #000;
+                margin: 3px 0;
+            }
+
+            .row {
+                display: flex;
+                justify-content: space-between;
+                font-size: 14px;
+                padding: 2px 0;
+            }
+
+            .bold {
+                font-weight: 700;
+            }
+
+            .large {
+                font-size: 22px;
+                font-weight: 900;
+            }
+
+            .indent {
+                padding-left: 15px;
+            }
+
+            .right {
+                text-align: right;
+            }
+
+            .calories {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+            }
+        </style>
+
+        <div class="label">
+            <div class="title">Nutrition Facts</div>
+
+            <div class="serving">Per 0 g</div>
+
+            <div class="divider"></div>
+
+            <div class="calories">
+                <div class="bold">Calories</div>
+                <div class="large">0 kcal</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="row bold">
+                <span>Fat 0 g</span>
+            </div>
+            <div class="thin-divider"></div>
+
+            <div class="row bold">
+                <span>Carbohydrate 0 g</span>
+            </div>
+            <div class="thin-divider"></div>
+
+            <div class="row indent">
+                <span>Fiber 0 g</span>
+            </div>
+            <div class="thin-divider"></div>
+
+            <div class="row bold">
+                <span>Protein 0 g</span>
+                <span></span>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="row">
+                <span>Sodium 0 g</span>
+            </div>
+        </div>
+
     </article>
 {% endblock %}
