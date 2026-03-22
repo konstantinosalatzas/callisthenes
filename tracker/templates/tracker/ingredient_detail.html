@@ -39,46 +39,34 @@
         </aside>
         <div class="nutrition-facts-label">
             <div class="nutrition-facts-title">Nutrition Facts</div>
-
             <div class="nutrition-facts-serving">Quantity {{ ingredient.quantity|linebreaksbr }} {{ ingredient.unit.unit_of_measurement|linebreaksbr }}</div>
-
             <div class="nutrition-facts-divider"></div>
-
             <div class="nutrition-facts-calories">
                 <div class="nutrition-facts-bold">Calories</div>
                 <div class="nutrition-facts-large">{{ ingredient.kcal|linebreaksbr }} kcal</div>
             </div>
-
             <div class="nutrition-facts-divider"></div>
-
             <div class="nutrition-facts-row nutrition-facts-bold">
                 <span>Fat {{ ingredient.fats|linebreaksbr }} g</span>
             </div>
             <div class="nutrition-facts-thin-divider"></div>
-
             <div class="nutrition-facts-row nutrition-facts-bold">
                 <span>Carbohydrate {{ ingredient.carbs|linebreaksbr }} g</span>
             </div>
             <div class="nutrition-facts-thin-divider"></div>
-
             <div class="nutrition-facts-row nutrition-facts-indent">
                 <span>Fiber {{ ingredient.fiber|linebreaksbr }} g</span>
             </div>
             <div class="nutrition-facts-thin-divider"></div>
-
             <div class="nutrition-facts-row nutrition-facts-bold">
                 <span>Protein {{ ingredient.protein|linebreaksbr }} g</span>
                 <span></span>
             </div>
-
             <div class="nutrition-facts-divider"></div>
-
             <div class="nutrition-facts-row">
                 <span>Sodium {{ ingredient.sodium|linebreaksbr }} g</span>
             </div>
-
             <div class="nutrition-facts-divider"></div>
-
             <div class="nutrition-facts-row">
                 <span>Cost {{ ingredient.cost|linebreaksbr }} €</span>
             </div>
