@@ -38,7 +38,7 @@
             </div>
         </aside>
         <style>
-            .label {
+            .nutrition-facts-label {
                 width: 300px;
                 background: #fff;
                 border: 3px solid #000;
@@ -46,7 +46,7 @@
                 color: #000;
             }
 
-            .title {
+            .nutrition-facts-title {
                 font-size: 28px;
                 font-weight: 900;
                 border-bottom: 10px solid #000;
@@ -54,94 +54,94 @@
                 margin-bottom: 5px;
             }
 
-            .serving {
+            .nutrition-facts-serving {
                 font-size: 14px;
                 margin-bottom: 5px;
             }
 
-            .divider {
+            .nutrition-facts-divider {
                 border-top: 5px solid #000;
                 margin: 5px 0;
             }
 
-            .thin-divider {
+            .nutrition-facts-thin-divider {
                 border-top: 1px solid #000;
                 margin: 3px 0;
             }
 
-            .row {
+            .nutrition-facts-row {
                 display: flex;
                 justify-content: space-between;
                 font-size: 14px;
                 padding: 2px 0;
             }
 
-            .bold {
+            .nutrition-facts-bold {
                 font-weight: 700;
             }
 
-            .large {
+            .nutrition-facts-large {
                 font-size: 22px;
                 font-weight: 900;
             }
 
-            .indent {
+            .nutrition-facts-indent {
                 padding-left: 15px;
             }
 
-            .right {
+            .nutrition-facts-right {
                 text-align: right;
             }
 
-            .calories {
+            .nutrition-facts-calories {
                 display: flex;
                 justify-content: space-between;
                 align-items: baseline;
             }
         </style>
-        <div class="label">
-            <div class="title">Nutrition Facts</div>
+        <div class="nutrition-facts-label">
+            <div class="nutrition-facts-title">Nutrition Facts</div>
 
-            <div class="serving">Quantity {{ ingredient.quantity|linebreaksbr }} {{ ingredient.unit.unit_of_measurement|linebreaksbr }}</div>
+            <div class="nutrition-facts-serving">Quantity {{ ingredient.quantity|linebreaksbr }} {{ ingredient.unit.unit_of_measurement|linebreaksbr }}</div>
 
-            <div class="divider"></div>
+            <div class="nutrition-facts-divider"></div>
 
-            <div class="calories">
-                <div class="bold">Calories</div>
-                <div class="large">{{ ingredient.kcal|linebreaksbr }} kcal</div>
+            <div class="nutrition-facts-calories">
+                <div class="nutrition-facts-bold">Calories</div>
+                <div class="nutrition-facts-large">{{ ingredient.kcal|linebreaksbr }} kcal</div>
             </div>
 
-            <div class="divider"></div>
+            <div class="nutrition-facts-divider"></div>
 
-            <div class="row bold">
+            <div class="nutrition-facts-row nutrition-facts-bold">
                 <span>Fat {{ ingredient.fats|linebreaksbr }} g</span>
             </div>
-            <div class="thin-divider"></div>
+            <div class="nutrition-facts-thin-divider"></div>
 
-            <div class="row bold">
+            <div class="nutrition-facts-row nutrition-facts-bold">
                 <span>Carbohydrate {{ ingredient.carbs|linebreaksbr }} g</span>
             </div>
-            <div class="thin-divider"></div>
+            <div class="nutrition-facts-thin-divider"></div>
 
-            <div class="row indent">
+            <div class="nutrition-facts-row nutrition-facts-indent">
                 <span>Fiber {{ ingredient.fiber|linebreaksbr }} g</span>
             </div>
-            <div class="thin-divider"></div>
+            <div class="nutrition-facts-thin-divider"></div>
 
-            <div class="row bold">
+            <div class="nutrition-facts-row nutrition-facts-bold">
                 <span>Protein {{ ingredient.protein|linebreaksbr }} g</span>
                 <span></span>
             </div>
 
-            <div class="divider"></div>
+            <div class="nutrition-facts-divider"></div>
 
-            <div class="row">
+            <div class="nutrition-facts-row">
                 <span>Sodium {{ ingredient.sodium|linebreaksbr }} g</span>
             </div>
 
-            <div class="divider"></div>
+            <div class="nutrition-facts-divider"></div>
 
-            <div class="row">
+            <div class="nutrition-facts-row">
                 <span>Cost {{ ingredient.cost|linebreaksbr }} €</span>
             </div>
         </div>
