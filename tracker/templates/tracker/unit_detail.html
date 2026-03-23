@@ -43,14 +43,40 @@
             </div>
         </aside>
 
-        <p>(per {{ unit.units|linebreaksbr }} {{ unit.unit_of_measurement|linebreaksbr }})</p>
-        <p>Protein: {{ unit.protein|linebreaksbr }} g</p>
-        <p>Carbohydrates: {{ unit.carbs|linebreaksbr }} g</p>
-        <p>Fats: {{ unit.fats|linebreaksbr }} g</p>
-        <p>Fiber: {{ unit.fiber|linebreaksbr }} g</p>
-        <p>Sodium: {{ unit.sodium|linebreaksbr }} g</p>
-        <p>Calories: {{ unit.kcal|linebreaksbr }} kcal</p>
-        <p>Cost: {{ unit.cost|linebreaksbr }} €</p>
+        <div class="nutrition-facts-label">
+            <div class="nutrition-facts-title">Nutrition Facts</div>
+            <div class="nutrition-facts-serving">Per {{ unit.units|linebreaksbr }} {{ unit.unit_of_measurement|linebreaksbr }}</div>
+            <div class="nutrition-facts-divider"></div>
+            <div class="nutrition-facts-calories">
+                <div class="nutrition-facts-bold">Calories</div>
+                <div class="nutrition-facts-large">{{ unit.kcal|linebreaksbr }} kcal</div>
+            </div>
+            <div class="nutrition-facts-divider"></div>
+            <div class="nutrition-facts-row nutrition-facts-bold">
+                <span>Fat {{ unit.fats|linebreaksbr }} g</span>
+            </div>
+            <div class="nutrition-facts-thin-divider"></div>
+            <div class="nutrition-facts-row nutrition-facts-bold">
+                <span>Carbohydrate {{ unit.carbs|linebreaksbr }} g</span>
+            </div>
+            <div class="nutrition-facts-thin-divider"></div>
+            <div class="nutrition-facts-row nutrition-facts-indent">
+                <span>Fiber {{ unit.fiber|linebreaksbr }} g</span>
+            </div>
+            <div class="nutrition-facts-thin-divider"></div>
+            <div class="nutrition-facts-row nutrition-facts-bold">
+                <span>Protein {{ unit.protein|linebreaksbr }} g</span>
+                <span></span>
+            </div>
+            <div class="nutrition-facts-divider"></div>
+            <div class="nutrition-facts-row">
+                <span>Sodium {{ unit.sodium|linebreaksbr }} g</span>
+            </div>
+            <div class="nutrition-facts-divider"></div>
+            <div class="nutrition-facts-row">
+                <span>Cost {{ unit.cost|linebreaksbr }} €</span>
+            </div>
+        </div>
 
     </article>
 {% endblock %}

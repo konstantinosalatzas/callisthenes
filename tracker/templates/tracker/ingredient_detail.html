@@ -37,13 +37,39 @@
                 {% endif %}
             </div>
         </aside>
-        <p>Quantity: {{ ingredient.quantity|linebreaksbr }} {{ ingredient.unit.unit_of_measurement|linebreaksbr }}</p>
-        <p>Protein: {{ ingredient.protein|linebreaksbr }} g</p>
-        <p>Carbohydrates: {{ ingredient.carbs|linebreaksbr }} g</p>
-        <p>Fats: {{ ingredient.fats|linebreaksbr }} g</p>
-        <p>Fiber: {{ ingredient.fiber|linebreaksbr }} g</p>
-        <p>Sodium: {{ ingredient.sodium|linebreaksbr }} g</p>
-        <p>Calories: {{ ingredient.kcal|linebreaksbr }} kcal</p>
-        <p>Cost: {{ ingredient.cost|linebreaksbr }} €</p>
+        <div class="nutrition-facts-label">
+            <div class="nutrition-facts-title">Nutrition Facts</div>
+            <div class="nutrition-facts-serving">Quantity {{ ingredient.quantity|linebreaksbr }} {{ ingredient.unit.unit_of_measurement|linebreaksbr }}</div>
+            <div class="nutrition-facts-divider"></div>
+            <div class="nutrition-facts-calories">
+                <div class="nutrition-facts-bold">Calories</div>
+                <div class="nutrition-facts-large">{{ ingredient.kcal|linebreaksbr }} kcal</div>
+            </div>
+            <div class="nutrition-facts-divider"></div>
+            <div class="nutrition-facts-row nutrition-facts-bold">
+                <span>Fat {{ ingredient.fats|linebreaksbr }} g</span>
+            </div>
+            <div class="nutrition-facts-thin-divider"></div>
+            <div class="nutrition-facts-row nutrition-facts-bold">
+                <span>Carbohydrate {{ ingredient.carbs|linebreaksbr }} g</span>
+            </div>
+            <div class="nutrition-facts-thin-divider"></div>
+            <div class="nutrition-facts-row nutrition-facts-indent">
+                <span>Fiber {{ ingredient.fiber|linebreaksbr }} g</span>
+            </div>
+            <div class="nutrition-facts-thin-divider"></div>
+            <div class="nutrition-facts-row nutrition-facts-bold">
+                <span>Protein {{ ingredient.protein|linebreaksbr }} g</span>
+                <span></span>
+            </div>
+            <div class="nutrition-facts-divider"></div>
+            <div class="nutrition-facts-row">
+                <span>Sodium {{ ingredient.sodium|linebreaksbr }} g</span>
+            </div>
+            <div class="nutrition-facts-divider"></div>
+            <div class="nutrition-facts-row">
+                <span>Cost {{ ingredient.cost|linebreaksbr }} €</span>
+            </div>
+        </div>
     </article>
 {% endblock %}
