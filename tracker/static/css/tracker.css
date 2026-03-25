@@ -309,3 +309,51 @@ small a:visited {
     justify-content: space-between;
     align-items: baseline;
 }
+
+.pie-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pie-wrapper {
+    width: 180px;
+    height: 180px;
+}
+
+.pie-legend {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pie-li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.pie-protein-color {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: red;
+    border-radius: 3px;
+}
+
+.pie-carb-color {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: blue;
+    border-radius: 3px;
+}
+
+.pie-fat-color {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: yellow;
+    border-radius: 3px;
+}
