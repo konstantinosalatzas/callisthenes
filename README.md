@@ -1,6 +1,6 @@
-# Callisthenes
+# [Callisthenes](https://callisthenes.eu.pythonanywhere.com)
 
-Callisthenes is a personal calisthenics training and nutrition tracking system
+[Callisthenes](https://callisthenes.eu.pythonanywhere.com) is a personal calisthenics training and nutrition tracking system
 
 It is a work in progress and a practice project
 
