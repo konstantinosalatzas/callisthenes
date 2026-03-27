@@ -23,4 +23,4 @@ python manage.py createsuperuser
 python manage.py test tracker
 
 # Output database data to file
-python manage.py dumpdata > dumpdata/db.json
+python manage.py dumpdata > data/db.json
