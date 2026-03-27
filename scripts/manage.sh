@@ -21,3 +21,5 @@ python manage.py createsuperuser
 
 # Test app
 python manage.py test tracker
+
+python manage.py dumpdata > dumpdata/db.json
