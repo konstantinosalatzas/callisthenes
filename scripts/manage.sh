@@ -24,3 +24,6 @@ python manage.py test tracker
 
 # Output database data to file
 python manage.py dumpdata > data/db.json
+
+# Recover database data from file
+python manage.py loaddata data/db.json
