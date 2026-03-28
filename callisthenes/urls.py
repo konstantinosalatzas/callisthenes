@@ -18,9 +18,16 @@ import os
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views
+from django.contrib.sitemaps.views import sitemap
 from dotenv import load_dotenv
 
+from .sitemaps import StaticViewSitemap
+
 load_dotenv()
+
+sitemaps = {
+    'static': StaticViewSitemap,
+}
 
 urlpatterns = [
     path('', include('tracker.urls')),
@@ -29,4 +36,5 @@ urlpatterns = [
     path('accounts/logout/', views.LogoutView.as_view(next_page='/'), name='logout'),
     path('accounts/password_change/', views.PasswordChangeView.as_view(), name='password_change'),
     path('accounts/password_change/done/', views.PasswordChangeDoneView.as_view(), name='password_change_done'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
