@@ -8,7 +8,7 @@ Now its tech stack is:
 
 * Python-Django back-end
 
-* PostgreSQL/SQLite DB
+* PostgreSQL/SQLite database
 
 * HTML-CSS front-end
 
