@@ -18,8 +18,6 @@ import os
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views
-from django.contrib.sitemaps import GenericSitemap
-from django.contrib.sitemaps.views import sitemap
 from dotenv import load_dotenv
 
 load_dotenv()
