@@ -92,6 +92,14 @@ small a:visited {
     text-decoration: none;
 }
 
+footer {
+    bottom: 0;
+    text-align: left;
+    position: fixed;
+    padding: 3px;
+    color: black;
+}
+
 /* Training heatmap styles */
 
 .training-heatmap-container {
