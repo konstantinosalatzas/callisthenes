@@ -2,7 +2,7 @@
 
 Callisthenes is a personal calisthenics training and nutrition tracking system
 
-It is a work in progress and a practice project
+It is a practice project and a way to formulate my way of thinking about training and nutrition tracking
 
 Now its tech stack is:
 
