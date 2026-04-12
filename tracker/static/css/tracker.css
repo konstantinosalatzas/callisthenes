@@ -174,8 +174,6 @@ footer {
     z-index: 100;
 }
 
-/* Intensity levels */
-
 .heatmap-day.intensity-0 {
     background-color: #ebedf0;
 }
